@@ -1,73 +1,81 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<header class="container_header">
+        <a href="">
+            <img class="img_logo" src="{{asset('storage/logo/logo_techhub_5.png')}}" alt="logo">
+        </a>
+</header>
+<main>
+    <div class="container_signup">
+        <div class="form_header">
+            <div class="signup_title">
+                Iniciar Sesión
+            </div>
+            <div class="already_user">
+                ¿Nuevo en techHub?
+                <a href="{{url('/register')}}" >Regístrate</a>
+            </div>
+        </div>
+        <div class="signup_section">
+            <div class="form_content">
+                <form class="form_signup" action="{{ route('login') }}" method="POST">
+                    @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                    <div class="email">
+                        <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" required value="{{ old('email') }}" autocomplete="email">
+                        <label>Email</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email')
+                            <span class="errores" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                    </div>
+                    <div class="pass">
+                        <input class="input_change @error('password') is-invalid @enderror" type="password" name="password" required value="">
+                        <label>Contraseña</label>
+
+                        @error('password')
+                            <span class="errores" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                    </div>
+                    <input class="submit_button" type="submit" name="" value="Regístrate">
+                </form>
+            </div>
+            <div class="divider">
+                <!-- linea vertical -->
+            </div>
+            <div class="o-xs-register d-lg-none">
+                <div class="separador_horizontal"></div>
+                <div class="texto-separador">O utiliza</div>
+                <div class="separador_horizontal"></div>
+            </div>
+            <div class="signup_social">
+                <a class="href_facebook" href="{{ url('auth/facebook')}}">
+                    <div class="facebook">
+                        <div class="facebook_icon">
+                            <i class="fab fa-facebook-f"></i>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        Continuar con Facebook
+                    </div>
+                </a>
+                <a class="href_google" href="{{ url('auth/google')}}">
+                    <div class="google">
+                        <div class="google_icon">
+                            <i class="fab fa-google"></i>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        Continuar con Google
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-</div>
+</main>
+
 @endsection

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->longText('avatar')->nullable();
             $table->tinyInteger('role')->default(3);
             $table->longText('provider')->nullable();
-            $table->bigInteger('provider_id')->nullable();
+            $table->longText('provider_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
