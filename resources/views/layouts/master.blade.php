@@ -1,30 +1,22 @@
-    <!DOCTYPE html>
-    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/login_register.css') }}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles-adriano.css">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<script src="{{ asset('js/app.js') }}" defer></script>
+	<title>techHub</title>
+</head>
 
-        <title>Document</title>
-    </head>
-    <body>
-
+<body>
 		@include('layouts.partials.navbar')
-
-		<div class="spacer"></div>
-		<div class="spacer"></div>
-		
 		@yield('content')
-
-		<div class="spacer"></div>
 		@include('layouts.partials.footer')
-
 		@include('layouts.partials.scripts')
-
-	</body>
-    </html>
+</body>
+</html>
     

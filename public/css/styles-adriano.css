@@ -1,0 +1,140 @@
+*
+{
+     padding: 0;
+     /* margin: 0 auto; */
+     box-sizing: border-box;
+}
+body
+{
+     font-family: 'Raleway', sans-serif;
+     overflow-x: hidden;
+     background-color: rgb(255, 255, 255);
+}
+a
+{
+     text-decoration: none;
+     color: #000000;
+}
+.__nav
+{
+     width: 100%;
+     margin-right: 0px;
+     overflow: hidden;
+}
+.o_links{
+     color:black !important;
+   }
+   .o_links:hover {
+     color: #34B483 !important;
+   }
+.__QUS_container
+{
+     margin: 0 auto;
+     padding: 40px 220px;
+     /* max-width:85%; */
+}
+.__QUS_container h1 {     
+     text-align: center;
+}
+.p-r
+{
+     background-color: rgb(206, 206, 206);
+     border-radius: 10px;
+}
+.__pregunta
+
+{
+     font-size: 20px;
+     background-color: rgb(52, 180, 131);
+     padding: 4px 10px;
+     border-radius: 10px 10px 0px 0px;
+}
+.__respuesta
+{
+     transition: all 0.3s;
+     padding: 0px 10px 10px 10px;
+     margin-top: -10px;
+}
+.__respuesta ul , .__respuesta ol
+{
+     padding-left: 40px;
+}
+.__form_otrasPreguntas
+{
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+}
+.__form_otrasPreguntas label
+{
+     font-size: 20px;
+     margin: 0 10px 0 0;
+}
+.__form_otrasPreguntas textarea
+{
+     border-radius: 8px;
+     width: 60%;
+     height: 100px;
+     margin-top: 6px;
+}
+.__form_otrasPreguntas textarea:focus
+{
+     border: 2px solid rgb(52, 180, 131);
+     box-shadow: 0;
+}
+.__form_otrasPreguntas button
+{
+     border-radius: 8px;
+     background-color: rgb(52, 180, 131);
+     border: none;
+     padding: 6px 14px;
+     width: 76px;
+     margin-top: 10px;
+     color: #000000;
+
+}
+.__form_otrasPreguntas button:hover
+{
+     background-color: rgba(52, 180, 131, 0.7);
+     color: #000000;
+
+}
+
+@media (min-width: 400px) 
+{
+   
+}
+
+@media (min-width: 768px) 
+{
+    
+}
+
+@media (min-width: 992px) 
+{
+    
+     .__pregunta
+     {
+        font-size: 20px;
+        background-color: rgb(52, 180, 131);
+        padding: 4px 10px;
+        border-radius: 10px;
+     }
+     .__respuesta
+     {
+        display: none;
+        transition: all 0.3s;
+        padding: 0px 10px 10px 10px;
+     }
+     
+     .__pregunta:focus
+     {
+        border-radius: 10px 10px 0px 0px;
+        outline: none
+     }
+     .__pregunta:focus ~ .__respuesta
+     {
+        display: block;
+     }
+
+}
