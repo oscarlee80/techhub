@@ -12,8 +12,8 @@
 </head>
 <body>
     <header class="container_header">
-            <a href="">
-                <img class="img_logo" src="{{asset('storage/logo/logo_techhub_5.png')}}" alt="logo">
+            <a href="/home">
+                <img class="img_logo" src="{{asset('/img/logo_techhub_5.png')}}" alt="logo">
             </a>
     </header>
     <main>
@@ -54,7 +54,7 @@
                             @enderror
 
                         </div>
-                        <input class="submit_button" type="submit" name="" value="Regístrate">
+                        <input class="submit_button" type="submit" name="" value="Ingresar">
                     </form>
                 </div>
                 <div class="divider">

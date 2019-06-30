@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/styles-adriano.css">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script src="{{ asset('js/app.js') }}" defer></script>
-	<title>techHub</title>
+	<title>@yield('title')</title>
 </head>
 
 <body>
@@ -19,4 +19,3 @@
 		@include('layouts.partials.scripts')
 </body>
 </html>
-    

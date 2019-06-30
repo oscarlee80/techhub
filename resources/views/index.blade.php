@@ -1,8 +1,11 @@
-@extends ('layouts/master')
-
+@extends ('layouts.master')
+@section ('title')
+TechHub
+@endsection
 @section ('content')
+@include ('layouts.partials.carousel')
 <div class="container-fluid">
-    <a href="catalogo.php" class="d-flex btn btn-primary __todos">Ver Catalogo Completo</a>
+    <a href="/products" class="d-flex btn btn-primary __todos">Ver Catalogo Completo</a>
     <hr class="__sep_car-oft">
     <div class="__ofertas row">
         <div class="col-12 text-center __productos_destacados">

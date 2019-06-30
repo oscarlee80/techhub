@@ -1,15 +1,10 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
-
-Route::get('/faq', function () { return view('faq'); });
+Route::get('faq', function () { return view('faq'); });
 
 Auth::routes();
-
 
 Route::group(['prefix' => 'products'], function() {
     Route::get('/', 'ProductController@index');
