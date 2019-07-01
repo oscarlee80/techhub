@@ -10,11 +10,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto o_navitems">
                 
-                @if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
-                    <li class="nav-item o_navlinks">
-                        <a class="nav-link o_links" href="manage_product.php">Administrar Productos</a>
-                    </li>
-                @endif
                 @if (isset(Auth::user()->first_name))
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="profile"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
@@ -30,6 +25,13 @@
                              @csrf
                          </form>
                     </li>
+                    @if (auth()->user()->role == 6 || auth()->user()->role == 6)
+                    <li class="nav-item o_navlinks">
+                        <a class="nav-link o_links" href="">
+                            BackOffice
+                        </a>
+                    </li>
+                    @endif
                 @else
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
