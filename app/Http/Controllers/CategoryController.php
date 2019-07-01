@@ -55,9 +55,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view ('category.show')->with('category', $category);
     }
 
     /**
@@ -66,9 +67,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view ('category.edit')->with('category', $category);
     }
 
     /**
@@ -78,9 +80,19 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+        ];
+        $messages = [
+            'name.required' => 'El campo nombre es obligatorio',
+        ];
+        $this->validate($request, $rules, $messages);
+        $category = Category::find($id);
+        $category->name = $request->input('name') !== $category->name ? $request->input('name') : $category->name;
+        $category->save();
+        return redirect("/categories/" . $category->id);
     }
 
     /**

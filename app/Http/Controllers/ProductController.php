@@ -19,6 +19,7 @@ class ProductController extends Controller
     {
         $limit = 10;
         $products = Product::make()->paginate($limit);
+        return view ('product.products')->with ('products', $products);
     }
 
     /**
@@ -69,9 +70,10 @@ class ProductController extends Controller
         //     ]);
         // }
 
-        $photos = $request->file('photos')->store('products', 'public'); 
+        $photos = $request->file('photos')->store('products', 'public');
+        $filename = basename($photos);
         $product = new Product($request->all());
-        $product->photos = $photos;
+        $product->photos = $filename;
         $product->save();
         return redirect('/backoffice/products');
     
@@ -97,7 +99,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
             // el metodo edit es la responsabilidad del controlador de mostrar la vista de edicion de un recurso.
     // Para cargar la vista de edicion, en este caso tengo que mandarla con la pelicula (con su ID) y ademas su genero actual buscandolo individualmente ($genre), MAS los posibles generos que puedan llegar a tomar su lugar ($genres)
@@ -122,7 +124,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
             // Dejo este dd comentado para ir viendo los cambios!
     //dd($request->all());

@@ -31,16 +31,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $key => $value)
+                    @foreach ($categories as $category)
                         <tr>
 
-                            <th scope="row"><?= $value["id"] ?></th>
-                            <td><?= $value["name"]; ?></td>
-                            <td><a href="showProduct.php?id=<?= $value['id']; ?>">
+                            <th scope="row">{{ $category->id }}</th>
+                            <td>{{ $category->name }}</td>
+                            <td><a href="/categories/{{$category->id}}">
                                     <i class="far fa-eye"></i>
                                 </a>
                             </td>
-                            <td><a href="editProduct.php?id=<?= $value['id']; ?>">
+                            <td><a href="/categories/{{$category->id}}/edit">
                                     <i class="far fa-edit"></i>
                                 </a>
                             </td>
