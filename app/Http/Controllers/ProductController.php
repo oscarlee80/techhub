@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+
+use App\Category;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,10 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-    $limit = 10;
-    $products = Product::make()->paginate($limit);
-
-    return view ('product.products')->with ('products', $products);
+        $limit = 10;
+        $products = Product::make()->paginate($limit);
     }
 
     /**
@@ -27,8 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $genres = Genre::all();
-        return view('movies.create')->with('genres', $genres);
+        $categories = Category::all();
+        return view('product.create')->with('categories', $categories);
     }
 
     /**
@@ -39,55 +40,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-            //VALIDACION
-        // Aplicamos las reglas. Como en todo array asociativo, tenemos claves y valores.
-        // En este caso, las claves (del lado izquierdo), son LOS NAME del formulario, mientras que 
-        // del lado derecho tenemos los valores, que son las reglas y pueden ser bastante mas amplias
+        
         $reglas = [
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
             'photos' => 'required',
-            'trending' => 'required',
-            'active' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            // 'trending' => 'required',
+            // 'active' => 'required',
         ];
-    
-        // Podemos customisar el mensaje de error de esta manera. el valor :attribute hace referencia
-        // a alguno de los name del formulario que hayan entrado por Request.
-        // En este caso el mensaje es el mismo pero lo traducimos al castellano.
+
         $mensajes = [
-            'required' => 'el campo :attribute es obligatorio'
+            'title.required' => 'El titulo es obligatorio',
+            'description.required' => 'La descripción es obligatoria',
+            'price.required' => 'El precio es obligatorio',
+            'photos.required' => 'La foto es obligatoria',
         ];
     
         //
         $this->validate($request, $reglas, $mensajes);
-    
-        // Queda comentada la modalidad para insertar campo por campo
-        // $movie = new Movie([
-        //     'title' => $request->input('titulo'),
-        //     'rating' => $request->input('rating'),
-        //     'length' => $request->input('duracion'),
-        //     'awards' => $request->input('premios'),
-        //     'release_date' => $request->input('fecha_de_estreno'),
-        //     'genre_id' => $request->input('genero'),
-        // ]);
-        foreach ($request->paths as $photo) {
-            $filename = $photo->store('product','public');
-            Multimedia::create([
-                'product_id' => $request->product_id,
-                'path' => $filename
-            ]);
-        }
-        $photopath = $request->file('photopath')->store('posters', 'public');
-        
-        $movie = new Movie($request->all());
-    
-        $movie->photopath = $photopath;
-    
-        $movie->save();
-    
-        return redirect('/movies');
+
+        // foreach ($request->paths as $photo) {
+        //     $filename = $photo->store('product','public');
+        //     Multimedia::create([
+        //         'product_id' => $request->product_id,
+        //         'path' => $filename
+        //     ]);
+        // }
+
+        $photos = $request->file('photos')->store('products', 'public'); 
+        $product = new Product($request->all());
+        $product->photos = $photos;
+        $product->save();
+        return redirect('/backoffice/products');
     
     }
 

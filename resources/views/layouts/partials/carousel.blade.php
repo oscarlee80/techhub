@@ -1,5 +1,5 @@
 <br>
-<div id="carouselExampleFade container-fluid" class="carousel slide carousel-fade d-none d-lg-flex" data-ride="carousel">
+<div id="carouselExampleFade" class="carousel slide carousel-fade d-none d-lg-flex" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="img/car01.jpg" class="d-block w-100" alt="...">

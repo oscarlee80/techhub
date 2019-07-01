@@ -8,15 +8,25 @@ Auth::routes();
 
 Route::group(['prefix' => 'products'], function() {
     Route::get('/', 'ProductController@index');
-    Route::get('/create', 'ProductController@create');
-    Route::get('/{id}/edit', 'ProductController@edit');
-    Route::patch('/{id}/edit', 'ProductController@update');
+    Route::get('/create', 'ProductController@create')->middleware('admin')->name('addProduct');
+    Route::post('/create', 'ProductController@store')->middleware('admin');
+    Route::get('/{id}/edit', 'ProductController@edit')->middleware('admin');
+    Route::patch('/{id}/edit', 'ProductController@update')->middleware('admin');
+    Route::delete('/{id}', 'ProductController@destroy')->middleware('admin');
     Route::get('/{id}', 'ProductController@show');
-    Route::post('/create', 'ProductController@store');
 });
 
-// Route::group(['prefix' => 'cart'], function() {
-//     Route::get('/', 'CartController@index');
+Route::group(['prefix' => 'categories'], function() {
+    Route::get('/', 'CategoryController@index');
+    Route::get('/create', 'CategoryController@create')->middleware('admin')->name('addCategory');
+    Route::post('/create', 'CategoryController@store')->middleware('admin');
+    Route::get('/{id}/edit', 'CategoryController@edit')->middleware('admin');
+    Route::patch('/{id}/edit', 'CategoryController@update')->middleware('admin');
+    Route::delete('/{id}', 'CategoryController@destroy')->middleware('admin')->name('delCategory');
+    Route::get('/{id}', 'CategoryController@show');
+});
+
+// Route::group(['prefix' => 'cart'], function() {//     Route::get('/', 'CartController@index');
 //     Route::get('/add/{movie_id}', 'CartController@add');
 //     Route::get('/remove/{movie_id}', 'CartController@remove');
 //     Route::get('/checkout', 'CartController@checkout');
@@ -24,8 +34,10 @@ Route::group(['prefix' => 'products'], function() {
 // });
 
 
-Route::group(['prefix' => 'backofiice'], function () {
-    Route::get('/', 'BackOfficeController@index');
+Route::group(['prefix' => 'backoffice'], function () {
+    Route::get('/', 'BackOfficeController@index')->name('backoffice');
+    Route::get('/products', 'BackOfficeController@products')->name('productCrud');
+    Route::get('/categories', 'BackOfficeController@categories')->name('categoriesCrud');
 });
 
 

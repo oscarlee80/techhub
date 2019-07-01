@@ -13,13 +13,14 @@ TechHub
                 Productos Destacados
             </p>
         </div>
-        @if (isset($trending))
-        @foreach ($trending as $value)
+        @if (isset($destacados))
+        @foreach ($destacados as $value)
             <div class="card col-12 col-md-4 col-lg-3 __itemoferta" style="width: 18rem;">
-                <img src="img/{{ $value['avatar'] }}" class="card-img-top __imgofertas" alt="...">
+                {{dd($value->photos)}}
+                <img src="/storage/app/{{ $value->photos }}" class="card-img-top __imgofertas" alt="IMAGEN">
                 <div class="card-body">
-                    <p class="card-text o_tituloitems">{{ $value['title'] }}</p>
-                    <a href="#" class="d-flex btn btn-primary __comprar">${{ $value['price'] }}</a>
+                    <p class="card-text o_tituloitems">{{ $value->title }}</p>
+                    <a href="#" class="d-flex btn btn-primary __comprar">${{ $value->price }}</a>
                 </div>
             </div>
         @endforeach

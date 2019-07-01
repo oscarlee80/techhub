@@ -24,9 +24,9 @@
                              @csrf
                          </form>
                     </li>
-                    @if (auth()->user()->role == 6 || auth()->user()->role == 6)
+                    @if (auth()->user()->role == 6 || auth()->user()->role == 9)
                     <li class="nav-item o_navlinks">
-                        <a class="nav-link o_links" href="">
+                        <a class="nav-link o_links" href="{{ route ('backoffice') }}">
                             BackOffice
                         </a>
                     </li>
