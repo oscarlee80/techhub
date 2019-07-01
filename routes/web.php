@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('faq', function () { return view('faq'); });
 

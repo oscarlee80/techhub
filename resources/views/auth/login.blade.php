@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="container_header">
-            <a href="/home">
+            <a href="/">
                 <img class="img_logo" src="{{asset('/img/logo_techhub_5.png')}}" alt="logo">
             </a>
     </header>
