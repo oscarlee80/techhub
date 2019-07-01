@@ -23,6 +23,12 @@ Route::group(['prefix' => 'products'], function() {
 //     Route::get('/flush', 'CartController@flush');
 // });
 
+
+Route::group(['prefix' => 'backofiice'], function () {
+    Route::get('/', 'BackOfficeController@index');
+});
+
+
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
