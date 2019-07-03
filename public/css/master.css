@@ -6,6 +6,7 @@ body{
   font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
   background-color: rgb(245,245,245);
+  overflow: scroll;
 }
 .container-fluid{
   padding: 0;
@@ -27,6 +28,12 @@ body{
 }
 .o_links:hover {
   color: #34B483 !important;
+}
+
+._search_box
+{
+    margin: 0px;
+
 }
 
 .__imglogo{

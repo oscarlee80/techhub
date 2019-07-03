@@ -41,6 +41,12 @@ Route::group(['prefix' => 'backoffice'], function () {
 });
 
 
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/{id}', 'ProfileController@show');
+});
+
+
+
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
