@@ -43,6 +43,7 @@ Route::group(['prefix' => 'backoffice'], function () {
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/{id}', 'ProfileController@show');
+    Route::patch('/{id}', 'ProfileController@update');
 });
 
 

@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">
-            <img class="__imglogo" src="img/logo_techhub_5.png" alt="logo">
+            <img class="__imglogo" src={{asset("img/logo_techhub_5.png")}} alt="logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                 
                 @if (isset(Auth::user()->first_name))
                     <li class="nav-item o_navlinks">
-                        <a class="nav-link o_links" href="profile/{{auth()->id()}}"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
+                        <a class="nav-link o_links" href="{{url('profile/'. auth()->user()->id)}}"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
                     </li>
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route('logout') }}"

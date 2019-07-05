@@ -6,7 +6,7 @@
 <body class="__perfil" id="body">
     <div class="_main_container">
         <div class="_profile_info">
-          <div class="_photo" style="background-image: url('storage/avatars/' . {{$user->avatar}})">
+          <div class="_photo" style="background-image: url({{asset('storage/avatars/' . $user->avatar)}})">
                 <!-- <img class="" src="" alt=""> -->
             </div>
             <div class="_info">
@@ -24,6 +24,8 @@
                             <a id="cerrar" href="">&times;</a>
                             <div class="popupContent">
                                 <form class="__profile_form" action="" method="POST">
+                                    {{ method_field('PATCH') }}
+                                    @csrf
                                     <input class="input_change" type="text" name="first_name" required value="" autofocus>
                                     <div class="_errors">
                                         
@@ -44,6 +46,8 @@
                             <a id="cerrar" href="">&times;</a>
                             <div class="popupContent">
                                 <form class="__profile_form" action="" method="POST">
+                                    {{ method_field('PATCH') }}
+                                    @csrf
                                     <input class="input_change" type="text" name="last_name" required value="" autofocus>
                                     <div class="_errors">
                                         
@@ -64,6 +68,8 @@
                             <a id="cerrar" href="">&times;</a>
                             <div class="popupContent">
                                 <form class="__profile_form" action="" method="POST">
+                                    {{ method_field('PATCH') }}
+                                    @csrf
                                     <input class="input_change" type="text" name="" required value="WOHOHO Despacio Cerebrito!">
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
@@ -80,6 +86,8 @@
                             <a id="cerrar" href="">&times;</a>
                             <div class="popupContent">
                                 <form class="__profile_form" action="" method="POST" enctype="multipart/form-data">
+                                    {{ method_field('PATCH') }}
+                                    @csrf
                                     <input name="hidden" type="hidden" id="hidden" value="" placeholder="">
                                     <input id="_inputProfile" type="file" name="avatar" value="" />
                                     <div class="_errors">
