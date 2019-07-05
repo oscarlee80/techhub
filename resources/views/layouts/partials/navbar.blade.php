@@ -12,7 +12,7 @@
                 
                 @if (isset(Auth::user()->first_name))
                     <li class="nav-item o_navlinks">
-                        <a class="nav-link o_links" href="profile"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
+                        <a class="nav-link o_links" href="profile/{{auth()->id()}}"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
                     </li>
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route('logout') }}"

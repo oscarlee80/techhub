@@ -1,6 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.onlyNav')
 
 @section('content')
+{{-- @dd(auth()->user()->first_name) --}}
 {{-- @dd($user) --}}
 <body class="__perfil" id="body">
     <div class="_main_container">
@@ -25,10 +26,7 @@
                                 <form class="__profile_form" action="" method="POST">
                                     <input class="input_change" type="text" name="first_name" required value="" autofocus>
                                     <div class="_errors">
-                                        <?php if (isset($errors["first_name"])) : ?>
-                                            <?= $errors["first_name"]; ?>
-                                            <br>
-                                        <?php endif; ?>
+                                        
                                     </div>
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
@@ -48,10 +46,7 @@
                                 <form class="__profile_form" action="" method="POST">
                                     <input class="input_change" type="text" name="last_name" required value="" autofocus>
                                     <div class="_errors">
-                                        <?php if (isset($errors["last_name"])) : ?>
-                                            <?= $errors["last_name"]; ?>
-                                            <br>
-                                        <?php endif; ?>
+                                        
                                     </div>
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
@@ -88,10 +83,7 @@
                                     <input name="hidden" type="hidden" id="hidden" value="" placeholder="">
                                     <input id="_inputProfile" type="file" name="avatar" value="" />
                                     <div class="_errors">
-                                        <?php if (isset($errors["avatar"])) : ?>
-                                            <?= $errors["avatar"]; ?>
-                                            <br>
-                                        <?php endif; ?>
+                                        
                                     </div>
                                     <br>
                                     <br>
