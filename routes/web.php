@@ -38,6 +38,10 @@ Route::group(['prefix' => 'backoffice'], function () {
     Route::get('/', 'BackOfficeController@index')->name('backoffice');
     Route::get('/products', 'BackOfficeController@products')->name('productCrud');
     Route::get('/categories', 'BackOfficeController@categories')->name('categoriesCrud');
+    Route::get('/users', 'BackOfficeController@users')->name('usersCrud');
+    Route::get('/users/{id}', 'BackOfficeController@showUser');
+    Route::get('/users/{id}/edit', 'BackOfficeController@editUser');
+    Route::post('/users/{id}/edit', 'BackOfficeController@updateUser');
 });
 
 

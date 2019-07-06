@@ -17,13 +17,13 @@
     <br>
     <br>
     <div align="center">
-    <a href="{{ route ('productCrud') }}" type="button" class="btn btn-primary btn-lg">Administrar productos</a>
-    <br>
-    <br>
-    <a href="{{ route ('categoriesCrud') }}"type="button" class="btn btn-primary btn-lg">Administrar categorias</a>
-    <br>
-    <br>
-    <a type="button" class="btn btn-primary btn-lg">Administrar usuarios</a>
-    </div>
+        <a class="btn btn-outline-dark btn-lg" role="button" href="{{ route ('productCrud') }}">Administrar productos</a>
+        <br>
+        <br>
+        <a class="btn btn-outline-dark btn-lg" role="button" href="{{ route ('categoriesCrud') }}">Administrar categorias</a>
+        <br>
+        <br>
+        <a  class="btn btn-outline-dark btn-lg" role="button" href="{{route('usersCrud')}}">Administrar usuarios</a>
+    </div>  
 </div>
 @endsection
