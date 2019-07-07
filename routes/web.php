@@ -26,12 +26,13 @@ Route::group(['prefix' => 'categories'], function() {
     Route::get('/{id}', 'CategoryController@show');
 });
 
-// Route::group(['prefix' => 'cart'], function() {//     Route::get('/', 'CartController@index');
-//     Route::get('/add/{movie_id}', 'CartController@add');
-//     Route::get('/remove/{movie_id}', 'CartController@remove');
-//     Route::get('/checkout', 'CartController@checkout');
-//     Route::get('/flush', 'CartController@flush');
-// });
+Route::group(['prefix' => 'cart'], function() {
+    Route::get('/', 'CartController@index');
+    Route::get('/add/{product_id}', 'CartController@add');
+    Route::get('/remove/{product_id}', 'CartController@remove');
+    Route::get('/checkout', 'CartController@checkout');
+    Route::get('/flush', 'CartController@flush');
+});
 
 
 Route::group(['prefix' => 'backoffice'], function () {
