@@ -15,7 +15,7 @@ class SuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->role !== 9) {
+        if (!auth()->user() || auth()->user()->role !== 9) {
             return redirect('/');
         }
         return $next($request);

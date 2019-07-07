@@ -20,7 +20,7 @@
                 <h5 class="card-title">Apellido: {{$user->last_name}}</h5>
                 <h5 class="card-title">Email: {{$user->email}}</h5>
                 <h5 class="card-title">Rol: {{$user->role}}</h5>
-                <a href="#" class="btn btn-primary">Editar</a>
+                <a href="{{url('backoffice/users/' . $user->id . '/edit')}}" class="btn btn-primary">Editar</a>
             </div>
         </div>
     </div>

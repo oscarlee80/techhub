@@ -47,11 +47,58 @@ class BackOfficeController extends Controller
 
     public function editUser($id)
     {
-        dd('llguw');
+        $user = User::find($id);
+
+        $roles = [3, 6, 9];
+
+        return view('users.edit')
+            ->with('user', $user)
+            ->with('roles', $roles);
     }
 
-    public function updateUser(Request $request)
+    public function updateUser(Request $request, $id)
     {
+        $rules = [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'role' => 'required'
+        ];
+        $messages = [
+            'required' => 'el campo :attribute es obligatorio',
+        ];
 
+        $this->validate($request, $rules, $messages);
+
+        $user = User::find($id);
+
+        
+        if($request->avatar){
+            $photopath = $request->file('avatar')->store('avatars', 'public');
+            $avatar = basename($photopath);
+            $user->avatar = $avatar;
+        }else{
+            $user->avatar = $user->avatar;
+        }
+        // dd($photopath);
+        // dd($avatar);
+
+        $user->first_name = $request->first_name !== $user->first_name ? $request->first_name : $user->first_name;
+        $user->last_name = $request->last_name !== $user->last_name ? $request->last_name : $user->last_name;
+        $user->email = $request->email !== $user->email ? $request->email : $user->email;
+        $user->role = $request->role !== $user->role ? $request->role : $user->role;
+        // dd($user->avatar);
+
+        // NO TOCAR
+        $user->email_verified_at = $user->email_verified_at;
+        $user->password = $user->password;
+        $user->provider = $user->provider;
+        $user->provider_id = $user->provider_id;
+        $user->remember_token = $user->remember_token;
+
+        $user->save();
+
+        return redirect(route('usersCrud'));
     }
+
 }

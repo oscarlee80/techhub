@@ -18,31 +18,7 @@ class ProfileController extends Controller
     
     public function update(Request $request, $id)
     {
-       // dd($request->all());
-        // dd($id);
-        
-        // $rules = [
-        //     'first_name' => 'required',
-        //     'last_name' => 'required'
-        // ];
-
-        // $message = [
-        //     'required' => 'Campo :attribute obligatorio'
-        // ];
-
-        // $this->validate($request, $rules, $message);
-
         $user = User::find($id);
-
-            // $user->email = $request->email !== $user->email ? $request->email : $user->email;
-
-            // dd( $user->email);
-   
-
-            // dd('llegue');
-
-
-            // $movie->title = $request->title !== $movie->title ? $request->title : $movie->title;
 
         if($request->first_name){
 
@@ -52,7 +28,7 @@ class ProfileController extends Controller
             $user->last_name = $user->last_name;
             $user->email = $user->email;
             $user->email_verified_at = $user->email_verified_at;
-            $user->avatar = $request->avatar === $user->avatar ? $request->avatar : $user->avatar;
+            $user->avatar = $user->avatar;
             $user->password = $user->password;
             $user->role = $user->role;
             $user->provider = $user->provider;
@@ -69,7 +45,23 @@ class ProfileController extends Controller
             $user->last_name = $last_name !== $user->last_name ? $last_name : $user->last_name;$user->last_name;
             $user->email = $user->email;
             $user->email_verified_at = $user->email_verified_at;
-            $user->avatar = $request->avatar === $user->avatar ? $request->avatar : $user->avatar;
+            $user->avatar = $user->avatar;
+            $user->password = $user->password;
+            $user->role = $user->role;
+            $user->provider = $user->provider;
+            $user->provider_id = $user->provider_id;
+            $user->remember_token = $user->remember_token;
+        }
+
+        if ($request->avatar) {
+            $photopath = $request->file('avatar')->store('avatars', 'public');
+            $avatar = basename($photopath);
+            $user->avatar = $avatar;
+
+            $user->first_name = $user->first_name;
+            $user->last_name = $user->last_name;
+            $user->email = $user->email;
+            $user->email_verified_at = $user->email_verified_at;
             $user->password = $user->password;
             $user->role = $user->role;
             $user->provider = $user->provider;
@@ -77,15 +69,9 @@ class ProfileController extends Controller
             $user->remember_token = $user->remember_token;
         }
         
-        
-            // dd($user);
+        $user->save();
 
-            $user->save();
-
-            // dd('paso el save');
-
-            return redirect("/profile/" . $user->id . '#body');
-
+        return redirect("/profile/" . $user->id . '#body');
         
     }
 }

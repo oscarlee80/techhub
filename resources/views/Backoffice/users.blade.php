@@ -1,7 +1,7 @@
 @extends ('layouts.main')
 
 @section ('title')
-    Administrar Usuarios
+    TechHub | Administrar Usuarios
 @endsection
 
 @section ('content')

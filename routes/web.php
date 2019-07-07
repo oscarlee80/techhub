@@ -35,13 +35,13 @@ Route::group(['prefix' => 'categories'], function() {
 
 
 Route::group(['prefix' => 'backoffice'], function () {
-    Route::get('/', 'BackOfficeController@index')->name('backoffice');
-    Route::get('/products', 'BackOfficeController@products')->name('productCrud');
-    Route::get('/categories', 'BackOfficeController@categories')->name('categoriesCrud');
-    Route::get('/users', 'BackOfficeController@users')->name('usersCrud');
-    Route::get('/users/{id}', 'BackOfficeController@showUser');
-    Route::get('/users/{id}/edit', 'BackOfficeController@editUser');
-    Route::post('/users/{id}/edit', 'BackOfficeController@updateUser');
+    Route::get('/', 'BackOfficeController@index')->middleware('admin')->name('backoffice');
+    Route::get('/products', 'BackOfficeController@products')->middleware('admin')->name('productCrud');
+    Route::get('/categories', 'BackOfficeController@categories')->middleware('admin')->name('categoriesCrud');
+    Route::get('/users', 'BackOfficeController@users')->middleware('superAdmin')->name('usersCrud');
+    Route::get('/users/{id}', 'BackOfficeController@showUser')->middleware('superAdmin');
+    Route::get('/users/{id}/edit', 'BackOfficeController@editUser')->middleware('superAdmin');
+    Route::patch('/users/{id}/edit', 'BackOfficeController@updateUser')->middleware('superAdmin');
 });
 
 

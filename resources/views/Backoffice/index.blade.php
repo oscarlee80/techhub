@@ -13,7 +13,7 @@
     </header>
     <br>
     <br>
-    <h1 align="center">Backoffice</h1>
+    <h1 class="mt-5" align="center">Backoffice</h1>
     <br>
     <br>
     <div align="center">
@@ -23,7 +23,9 @@
         <a class="btn btn-outline-dark btn-lg" role="button" href="{{ route ('categoriesCrud') }}">Administrar categorias</a>
         <br>
         <br>
-        <a  class="btn btn-outline-dark btn-lg" role="button" href="{{route('usersCrud')}}">Administrar usuarios</a>
+        @if(auth()->user()->role === 9)
+            <a  class="btn btn-outline-dark btn-lg" role="button" href="{{route('usersCrud')}}">Administrar usuarios</a>
+        @endif
     </div>  
 </div>
 @endsection
