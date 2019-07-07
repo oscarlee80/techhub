@@ -24,7 +24,7 @@ body{
 }
 
 .o_links{
-  color:black !important;
+  color:white !important;
 }
 .o_links:hover {
   color: #34B483 !important;
@@ -121,7 +121,7 @@ body{
   width: 100vw;
   max-height: 1000px;
   margin: 0 auto;
-  background-color: rgb(130, 130, 130);
+  background-color: rgb(52, 58, 64);
   /* border-radius: 0px 0px 20px 20px; */
   justify-content: space-around;
 }
@@ -131,7 +131,7 @@ body{
 }
 .__artpie h4{
   font-size: 1.3rem;
-  color: rgb(51, 51, 51);  
+  color: rgb(52, 157, 118);
   font-weight: bold;
   margin-bottom: 20px;
 }
