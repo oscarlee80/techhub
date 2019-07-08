@@ -11,13 +11,33 @@ class CartController extends Controller
     public function add($id)
     {
         $product = Product::find($id);
+        $cartProducts = session('cart')['products'];
 
-        $products = [
-            'id' => $product->id,
-            'title' => $product->title,
-            'price' => $product->price,
-            'photo' => $product->photos
-        ];
+        if($cartProducts){
+            $keys = array_keys($cartProducts);
+            foreach ($keys as $index) {
+                if($cartProducts[$index]['id'] !== $product->id){
+                    // dd('aca');
+                    $products = [
+                        'id' => $product->id,
+                        'title' => $product->title,
+                        'price' => $product->price,
+                        'photo' => $product->photos
+                    ];
+                }else{
+                    return redirect()->back();
+                }
+            }
+            
+        }else {
+            $products = [
+                'id' => $product->id,
+                'title' => $product->title,
+                'price' => $product->price,
+                'photo' => $product->photos
+            ];
+        }
+        
 
         session()->push('cart.products', $products);
 
