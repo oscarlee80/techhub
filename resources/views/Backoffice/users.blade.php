@@ -46,16 +46,16 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="/backoffice/users/{{ $user->id }}" type="submit" class="btn btn-success" value="" ><i class="far fa-eye"></i></a>
+                                <a href="/backoffice/users/{{ $user->id }}" type="" class="btn btn-outline-success" value="" ><i class="far fa-eye"></i></a>
                             </td>
                             <td>
-                                    <a href="/backoffice/users/{{ $user->id }}/edit" type="submit" class="btn btn-primary" value="" ><i class="far fa-edit"></i></a>
+                                    <a href="/backoffice/users/{{ $user->id }}/edit" type="" class="btn btn-outline-primary" value="" ><i class="far fa-edit"></i></a>
                             </td>
                             <td>
                                 <form method="POST" action="/backoffice/users/{{$user->id}}">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                                    <button type="submit" class="btn btn-outline-danger" value="" ><i class="far fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>

@@ -15,7 +15,8 @@ class CartController extends Controller
         $products = [
             'id' => $product->id,
             'title' => $product->title,
-            'price' => $product->price
+            'price' => $product->price,
+            'photo' => $product->photos
         ];
 
         session()->push('cart.products', $products);
@@ -27,10 +28,25 @@ class CartController extends Controller
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $products = session('cart')['products'];
-        return view('cart.index')->with('products', $products);
+        
+        $total = [];
+
+        if ($products) { 
+            $products = $request->session()->get('cart.products');
+            $keys = array_keys($products);
+
+            foreach ($keys as $index) {
+                array_push($total, $products[$index]['price']);
+            }
+        }
+        $totalPrice = array_sum($total);
+
+        return view('cart.index')
+                ->with('products', $products)
+                ->with('totalPrice', $totalPrice);
     }
 
     public function remove($id, Request $request)
@@ -51,7 +67,7 @@ class CartController extends Controller
     public function flush(Request $request)
     {
         $request->session('cart.products')->flush();
-        return redirect('/');
+        return redirect('/cart');
     }
 
     public function show(Cart $cart)

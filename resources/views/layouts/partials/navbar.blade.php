@@ -1,5 +1,6 @@
 <div class="container-fluid">
 <header>
+    {{-- @dd(session('cart.products')) --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="/">
             <img class="__imglogo" src={{asset("img/logo_techhub_6.png")}} alt="logo">
@@ -19,18 +20,18 @@
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt"></i> Salir</a>
-                         </a> 
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        </a> 
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                              @csrf
-                         </form>
+                        </form>
                     </li>
-                    @if (auth()->user()->role == 6 || auth()->user()->role == 9)
+                @if (auth()->user()->role == 6 || auth()->user()->role == 9)
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route ('backoffice') }}">
                             BackOffice
                         </a>
                     </li>
-                    @endif
+                @endif
                 @else
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
@@ -39,6 +40,13 @@
                         <a class="nav-link o_links" href="{{ route('register') }}"><i class="fas fa-pen"></i> Registrarme</a>
                     </li>
                 @endif
+                <li class="nav-item o_navlinks">
+                    <a class="nav-link o_links" href={{url('/cart')}}>
+                        <i class="fas fa-shopping-cart"></i>
+                        ({{ isset(session('cart')['products']) ? count(session('cart')['products']) : 0 }})
+                    </a>
+                    {{-- <p>{{count(session('cart'['products'])</p> --}}
+                </li>
                 <li class="nav-item o_navlinks">
                     <a class="nav-link o_links" href="{{ url('/faq') }}"><i class="far fa-question-circle"></i> FAQ</a>
                 </li>
