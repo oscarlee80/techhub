@@ -16,7 +16,7 @@
     <br>    
     <div class="container">
         <div class="">
-            <h1>Listado de Usuarios</h1>
+            <h1 align="center">Listado de Usuarios</h1>
         </div>
 
         <div class="">
@@ -36,28 +36,37 @@
                         <tr>
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->last_name . ', ' . $user->first_name }}</td>
-                            <td>{{ $user->role}}</td>
                             <td>
-                                <a href="{{url('backoffice/users/' . $user->id)}}">
-                                    <i class="far fa-eye"></i>
-                                </a>
+                                @if ($user->role == 3)
+                                Normal
+                                @elseif ($user->role == 6)
+                                Admin
+                                @elseif ($user->role == 9)
+                                Super Admin
+                                @endif
                             </td>
                             <td>
-                                <a href={{url('backoffice/users/' . $user->id . '/edit')}}>
-                                    <i class="far fa-edit"></i>
-                                </a>
+                                <a href="/backoffice/users/{{ $user->id }}" type="submit" class="btn btn-success" value="" ><i class="far fa-eye"></i></a>
                             </td>
                             <td>
-                                <a href="">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
+                                    <a href="/backoffice/users/{{ $user->id }}/edit" type="submit" class="btn btn-primary" value="" ><i class="far fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <form method="POST" action="/backoffice/users/{{$user->id}}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
         </div>
     </div>
-    <div class="already_user">
-        <a href="{{route('backoffice')}}">Volver</a>
-    </div>
+    <hr>
+    <div class="already_user" align="center">
+            <a class="btn btn-dark" href="{{route ('backoffice') }}" role ="button" style="color:white"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <hr>
+        {{ $users->links() }}
 @endsection

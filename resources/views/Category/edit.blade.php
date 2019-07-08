@@ -1,37 +1,47 @@
+
 @extends ('layouts.main')
 
 @section ('title')
-    Modificar {{ $category->name }}
+{{ $category->name }}
 @endsection
 
 @section ('content')
-    <main>
-        <a href="{{ route ('categoriesCrud') }}">Volver</a>
-        <div class="container_signup">
-            <div class="form_header">
-                <div class="signup_title">
-                    Modificar Categoría
-                </div>
+<br>
+<br>
+<br>
+<br>
+<header class="container_header">
+        <a href="/">
+            <img class="img_logo" src="{{asset('/img/logo_techhub_5.png')}}" alt="logo">
+        </a>
+</header>
+<div align="center">
+    <br>
+    <a href="/backoffice/categories" class="btn btn-dark btn-lg" role ="button" ><i class="fas fa-arrow-left"></i> Volver</a>
+    <hr width="380px">
+    <h2 >M O D I F I C A R</h2>
+    <h2 >C A T E G O R Í A</h2>
+    <hr width="380px">
+    <form method="POST" action="">
+        @csrf
+        @method ('PATCH')
+        <div class="form-group">
+            <label for="name">Nombre</label>
+
+            @error('name')
                 <br>
-            </div>
-            <div class="signup_section">
-                <div class="form_content">
-                    <form class="form_signup" action="" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method ('PATCH')
-                        <div class="name">
-                            <input class="input_change" type="text" name="name" required value="{{ $category->name }}">
-                            <label>Nombre</label>
-                        @error('name')
-                            <span class="errores" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        </div>
-                        <input class="submit_button" type="submit" name="" value="Crear Categoría">
-                    </form>
-                </div>
-            </div>
+                <span class="errores" role="alert" style="color:red">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <input name="name" value="{{ old('name') }}" type="text" class="form-control"  style="width : 330px;">
         </div>
-    </main>
-@endsection 
+        <br>
+        <hr align="center" width="380px">
+        <div class="md-form mt-0">
+            <button type="submit" class="btn btn-success btn-lg" >Modificar producto</button>
+        </div>
+    </form>
+</div>
+@endsection

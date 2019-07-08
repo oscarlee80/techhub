@@ -4,6 +4,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('faq', function () { return view('faq'); });
 
+Route::get('/results', 'SearchController@search');
+
 Auth::routes();
 
 Route::group(['prefix' => 'products'], function() {
@@ -38,11 +40,14 @@ Route::group(['prefix' => 'cart'], function() {
 Route::group(['prefix' => 'backoffice'], function () {
     Route::get('/', 'BackOfficeController@index')->middleware('admin')->name('backoffice');
     Route::get('/products', 'BackOfficeController@products')->middleware('admin')->name('productCrud');
+    Route::get('/product/{id}', 'BackOfficeController@showProduct')->middleware('admin');
     Route::get('/categories', 'BackOfficeController@categories')->middleware('admin')->name('categoriesCrud');
+    Route::get('/category/{id}', 'BackOfficeController@showCategory')->middleware('admin');
     Route::get('/users', 'BackOfficeController@users')->middleware('superAdmin')->name('usersCrud');
     Route::get('/users/{id}', 'BackOfficeController@showUser')->middleware('superAdmin');
     Route::get('/users/{id}/edit', 'BackOfficeController@editUser')->middleware('superAdmin');
     Route::patch('/users/{id}/edit', 'BackOfficeController@updateUser')->middleware('superAdmin');
+    Route::delete('/users/{id}', 'BackofficeController@destroyUser')->middleware('admin');
 });
 
 

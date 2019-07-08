@@ -24,4 +24,6 @@ Catálogo Completo
     @endforeach
     @endif
 </div>
+{{-- {{ $products->links() }} --}}
+
 @endsection

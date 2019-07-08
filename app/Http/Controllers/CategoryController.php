@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->input('name') !== $category->name ? $request->input('name') : $category->name;
         $category->save();
-        return redirect("/categories/" . $category->id);
+        return redirect("/backoffice/categories");
     }
 
     /**
@@ -101,8 +101,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::destroy($id);
+        return redirect("/backoffice/categories");
     }
 }

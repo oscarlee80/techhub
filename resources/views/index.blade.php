@@ -14,12 +14,12 @@ TechHub
             </p>
         </div>
         @if (isset($destacados))
-        @foreach ($destacados as $value)
+        @foreach ($destacados as $product)
             <div class="card col-12 col-md-4 col-lg-3 __itemoferta" style="width: 18rem;">
-                <img src="/storage/products/{{ $value->photos }}" class="card-img-top __imgofertas" alt="IMAGEN">
+                <img src="/storage/products/{{ $product->photos }}" class="card-img-top __imgofertas" alt="IMAGEN">
                 <div class="card-body">
-                    <p class="card-text o_tituloitems">{{ $value->title }}</p>
-                    <a href="#" class="d-flex btn btn-primary __comprar">${{ $value->price }}</a>
+                    <p class="card-text o_tituloitems">{{ $product->title }}</p>
+                    <a href="#" class="d-flex btn btn-primary __comprar">${{ $product->price }}</a>
                 </div>
             </div>
         @endforeach

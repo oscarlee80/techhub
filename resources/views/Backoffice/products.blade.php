@@ -16,7 +16,7 @@
     <br>    
     <div class="container">
         <div class="">
-            <h1>Listado de Productos</h1>
+            <h1 align="center">Listado de Productos</h1>
         </div>
 
         <div class="">
@@ -31,32 +31,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $key => $value)
+                    @foreach ($products as $product)
                         <tr>
-
-                            <th scope="row"><?= $value["id"] ?></th>
-                            <td><?= $value["title"]; ?></td>
-                            <td><a href="showProduct.php?id=<?= $value['id']; ?>">
-                                    <i class="far fa-eye"></i>
-                                </a>
+                            <th scope="row">{{ $product->id }}</th>
+                            <td>{{ $product->title}}</td>
+                            <td><a href="/backoffice/product/{{ $product->id}}" type="" class="btn btn-success" value="" ><i class="far fa-eye"></i></button>
                             </td>
-                            <td><a href="editProduct.php?id=<?= $value['id']; ?>">
-                                    <i class="far fa-edit"></i>
-                                </a>
+                            <td>
+                                <a href="/products/{{ $product->id }}/edit" type="" class="btn btn-primary" value="" ><i class="far fa-edit"></i></a>
                             </td>
-                            <td><a href="eliminarUsuarioAdmin.php?id=<?= $value['id']; ?>">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
+                            <td>
+                                <form method="POST" action="/products/{{$product->id}}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                                </form>
                             </td>
-
-                        </tr>
+                    </tr>
                     @endforeach
                 </tbody>
+            </div>
         </div>
-    </div>
-    <div class="already_user">
-        <a href="{{route('backoffice')}}">Volver</a>
-        <br>
-        <a href="{{route ('addProduct') }}">Nuevo Producto</a>
-    </div>
+        <hr>
+        <div class="already_user" align="center">
+            <a class="btn btn-dark" href="{{route ('backoffice') }}" role ="button" style="color:white"><i class="fas fa-arrow-left"></i></a>
+            <a class="btn btn-success" href="{{route ('addProduct') }}" role ="button" style="color:white"><i class="fas fa-plus-square"></i></a>
+        </div>
+        <hr>
+        {{ $products->links() }}
 @endsection

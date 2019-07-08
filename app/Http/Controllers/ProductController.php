@@ -6,61 +6,51 @@ use App\Product;
 
 use App\Category;
 
+use Illuminate\Http\File;
+
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $limit = 10;
-        $products = Product::make()->paginate($limit);
+        $products = Product::all();
+
         return view ('product.products')->with ('products', $products);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories = Category::all();
+
         return view('product.create')->with('categories', $categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         
-        $reglas = [
+        $rules = [
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
             'photos' => 'required',
             'category_id' => 'required',
-            // 'trending' => 'required',
-            // 'active' => 'required',
+            'trending' => 'required',
+            'active' => 'required',
         ];
 
-        $mensajes = [
+        $messages = [
             'title.required' => 'El titulo es obligatorio',
             'description.required' => 'La descripción es obligatoria',
             'price.required' => 'El precio es obligatorio',
             'photos.required' => 'La foto es obligatoria',
+            'category_id.required' => 'La categoría es obligatoria',
         ];
-    
-        //
-        $this->validate($request, $reglas, $mensajes);
+
+        $this->validate($request, $rules, $messages);
 
         // foreach ($request->paths as $photo) {
         //     $filename = $photo->store('product','public');
@@ -79,102 +69,65 @@ class ProductController extends Controller
     
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
+    public function show($id)
     {
-            // el metodo show() muestra un elemento/objeto individual. Puede ser el perfil de un usuario, 
-    // un producto, o como en este caso, una pelicula.
-    $movie = Movie::find($id);
-    return view('movies.show')->with('movie', $movie);
+    $product = Products::find($id);
+    return view('product.show')->with('product$product', $product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-            // el metodo edit es la responsabilidad del controlador de mostrar la vista de edicion de un recurso.
-    // Para cargar la vista de edicion, en este caso tengo que mandarla con la pelicula (con su ID) y ademas su genero actual buscandolo individualmente ($genre), MAS los posibles generos que puedan llegar a tomar su lugar ($genres)
+    $categories = Category::all();
+    $product = Product::find($id);
 
-    $genres = Genre::all();
-
-    $movie = Movie::find($id);
-
-    // si el encadenamiento de metodos se extiende mucho...
-    // return view('movies.editmovie')->with('movie', $movie)->with('genre', $genre)->with('genres', $genres);
-    // podemos acortarlo asi:
-    return view('movies.edit')
-        ->with('movie', $movie)
-        ->with('genre', $movie->genre)
-        ->with('genres', $genres);
+    return view('product.edit')
+        ->with('product', $product)
+        ->with('categories', $categories);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-            // Dejo este dd comentado para ir viendo los cambios!
-    //dd($request->all());
-    // Primero que nada, nos auto-robamos la validacion:
     $rules = [
         'title' => 'required',
-        'rating' => 'required',
-        'awards' => 'required',
-        'length' => 'required',
-        'release_date' => 'date|required',
-        'genre_id' => 'required',
+        'description' => 'required',
+        'price' => 'required',
+        'category_id' => 'required',
+        'trending' => 'required',
+        'active' => 'required',
     ];
+
     $messages = [
-        'required' => 'el campo :attribute es obligatorio',
+        'title.required' => 'El titulo es obligatorio',
+        'description.required' => 'La descripción es obligatoria',
+        'price.required' => 'El precio es obligatorio',
+        'category_id.required' => 'La categoría es obligatoria',
     ];
-    
+
     $this->validate($request, $rules, $messages);
-    // La logica de hacer un update es la siguiente:
-    // Tenemos el personaje A, que se llama Request, y el personaje B, que se 
-    // llama Movie.
-    // El personaje Request trae data que puede ser nueva o no, y el personaje Movie
-    // se para adelante y dice "compara con todo lo que tengo yo". Si el valor de un 
-    // campo de Request es igual a lo que ya tiene Movie, no hay cambio. Si es diferente,
-    // Movie atrapa el cambio y lo guarda, borrando el dato que tenia antes.
-    // En codigo:
-    $movie = Movie::find($id);
-    // Explicacion con el primer campo/atributo
-     $movie->title = $request->input('title') !== $movie->title ? $request->input('title') : $movie->title;
-     // El titulo va a ser igual a lo que salga de este if ternario.
-     // El if ocurre antes del signo de pregunta, "lo que llega de Request, NO ES igual a lo que movie ya tiene?"
-     // si NO es igual, pone lo que llego, si es igual, queda como esta.
-     $movie->rating = $request->input('rating') !== $movie->rating ? $request->input('rating') : $movie->rating;
-     $movie->awards = $request->input('awards') !== $movie->awards ? $request->input('awards') : $movie->awards;
-     $movie->length = $request->input('length') !== $movie->length ? $request->input('length') : $movie->length;
-     $movie->release_date = $request->input('release_date') !== $movie->release_date ? $request->input('release_date') : $movie->release_date;
-     $movie->genre_id = $request->input('genre_id') !== $movie->genre_id ? $request->input('genre_id') : $movie->genre_id;
-     //una vez que terminamos el proceso anterior, simplemente hacemos:
-     $movie->save();
-     // y vamos a ver los cambios:
-     return redirect("/movies/" . $movie->id);
+
+    $product = Product::find($id);
+    $product->title = $request->input('title') !== $product->title ? $request->input('title') : $product->title;
+    $product->price = $request->input('price') !== $product->price ? $request->input('price') : $product->price;
+    $product->description = $request->input('description') !== $product->description ? $request->input('description') : $product->description;
+    $product->category_id = $request->input('category_id') !== $product->category_id ? $request->input('category_id') : $product->category_id;
+    $product->active = $request->input('active') !== $product->active ? $request->input('active') : $product->active;
+    $product->trending = $request->input('trending') !== $product->trending ? $request->input('trending') : $product->trending;
+
+    if ($request->file('photos') !== null) {
+        unlink("storage/products/".$product->photos);
+        $photos = $request->file('photos')->store('products', 'public');
+        $filename = basename($photos);
+        $product->photos = $filename;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
+    $product->save();
+
+    return redirect("/backoffice/products/");
+    }
+
+    public function destroy($id)
     {
-        //
+        $product = Product::destroy($id);
+        return redirect("/backoffice/products");
     }
 }

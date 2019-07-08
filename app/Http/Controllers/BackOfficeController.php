@@ -19,22 +19,36 @@ class BackOfficeController extends Controller
 
     public function products()
     {
-        $limit = 20;
-        $products = Product::make()->paginate($limit)->sortBy('title');
+        $limit = 10;
+        $products = Product::make()->paginate($limit);
         return view ('backoffice.products')->with('products', $products);
+    }
+
+    public function showProduct($id)
+    {
+        $product = Product::find($id);
+
+        return view('backoffice.product')->with('product', $product);
     }
 
     public function categories()
     {
         $limit = 20;
-        $categories = Category::make()->paginate($limit)->sortBy('name');
+        $categories = Category::make()->paginate($limit);
         return view ('backoffice.categories')->with('categories', $categories);
+    }
+
+    public function showcategory($id)
+    {
+        $category = Category::find($id);
+
+        return view('backoffice.category')->with('category', $category);
     }
 
     public function users()
     {
         $limit = 20;
-        $users = User::make()->paginate($limit)->sortBy('last_name');
+        $users = User::make()->paginate($limit);
         return view('backoffice.users')->with('users', $users);
     }
 
@@ -42,16 +56,18 @@ class BackOfficeController extends Controller
     {
         $user = User::find($id);
 
-        return view('users.show')->with('user', $user);
+        return view('user.show')->with('user', $user);
     }
 
     public function editUser($id)
     {
         $user = User::find($id);
 
-        $roles = [3, 6, 9];
+        $roles = [3 => "Normal",
+                  6 => "Admin",
+                  9 => "Super Admin"];
 
-        return view('users.edit')
+        return view('user.edit')
             ->with('user', $user)
             ->with('roles', $roles);
     }
@@ -74,6 +90,7 @@ class BackOfficeController extends Controller
 
         
         if($request->avatar){
+            unlink("storage/avatars/".$user->avatar);
             $photopath = $request->file('avatar')->store('avatars', 'public');
             $avatar = basename($photopath);
             $user->avatar = $avatar;
@@ -101,4 +118,9 @@ class BackOfficeController extends Controller
         return redirect(route('usersCrud'));
     }
 
+    public function destroyUser($id)
+    {
+        $user = User::destroy($id);
+        return redirect("/backoffice/users");
+    }
 }

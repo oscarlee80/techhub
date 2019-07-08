@@ -14,8 +14,9 @@
     <br>
     <br>
     <h1 class="mt-5" align="center">Backoffice</h1>
-    <br>
-    <br>
+
+    <hr width="330px">
+
     <div align="center">
         <a class="btn btn-outline-dark btn-lg" role="button" href="{{ route ('productCrud') }}">Administrar productos</a>
         <br>

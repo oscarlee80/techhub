@@ -16,7 +16,7 @@
     <br>    
     <div class="container">
         <div class="">
-            <h1>Listado de Categorías</h1>
+            <h1 align="center">Listado de Categorías</h1>
         </div>
 
         <div class="">
@@ -32,31 +32,31 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $category)
-                        <tr>
-
-                            <th scope="row">{{ $category->id }}</th>
-                            <td>{{ $category->name }}</td>
-                            <td><a href="/categories/{{$category->id}}">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                            </td>
-                            <td><a href="/categories/{{$category->id}}/edit">
-                                    <i class="far fa-edit"></i>
-                                </a>
-                            </td>
-                            <td><a href="">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-
-                        </tr>
+                    <tr>
+                        <th scope="row">{{ $category->id }}</th>
+                        <td>{{ $category->name}}</td>
+                        <td><a href="/backoffice/category/{{ $category->id }}" type="submit" class="btn btn-success" value="" ><i class="far fa-eye"></i></a>
+                        </td>
+                        <td>
+                            <a href="/categories/{{ $category->id }}/edit" type="submit" class="btn btn-primary" value="" ><i class="far fa-edit"></i></a>
+                        </td>
+                        <td>
+                            <form method="POST" action="/categories/{{$category->id}}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
         </div>
     </div>
-    <div class="already_user">
-        <a href="{{route('backoffice')}}">Volver</a>
-        <br>
-        <a href="{{ route ('addCategory') }}">Nueva Categoría</a>
+    <hr>
+    <div class="already_user" align="center">
+        <a class="btn btn-dark" href="{{route ('backoffice') }}" role ="button" style="color:white"><i class="fas fa-arrow-left"></i></a>
+        <a class="btn btn-success" href="{{route ('addCategory') }}" role ="button" style="color:white"><i class="fas fa-plus-square"></i></a>
     </div>
+    <hr>
+    {{ $categories->links() }}
 @endsection
