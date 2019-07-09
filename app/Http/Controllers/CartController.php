@@ -22,7 +22,8 @@ class CartController extends Controller
                         'id' => $product->id,
                         'title' => $product->title,
                         'price' => $product->price,
-                        'photo' => $product->photos
+                        'photo' => $product->photos,
+                        'quantity' => 1
                     ];
                 }else{
                     return redirect()->back();
@@ -34,16 +35,14 @@ class CartController extends Controller
                 'id' => $product->id,
                 'title' => $product->title,
                 'price' => $product->price,
-                'photo' => $product->photos
+                'photo' => $product->photos,
+                'quantity' => 1
             ];
         }
         
 
         session()->push('cart.products', $products);
 
-        // $limit = 20;
-
-        // $products = Product
         return redirect(url('/'));
 
     }
@@ -59,7 +58,7 @@ class CartController extends Controller
             $keys = array_keys($products);
 
             foreach ($keys as $index) {
-                array_push($total, $products[$index]['price']);
+                array_push($total, $products[$index]['price'] * $products[$index]['quantity']);
             }
         }
         $totalPrice = array_sum($total);
@@ -90,23 +89,32 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function show(Cart $cart)
-    {
-        //
+    public function update(Request $request)
+    {   
+        // dd($request->all());
+        $cartProducts = session('cart')['products'];
+
+        if ($cartProducts) {
+            $products = $request->session()->get('cart.products');
+            $keys = array_keys($products);
+
+            foreach ($keys as $index) {
+                if ($products[$index]['id'] == $request->product_id) {
+                    $this->remove($request->product_id,  $request);
+                    $products = [
+                        'id' => $products[$index]['id'],
+                        'title' => $products[$index]['title'],
+                        'price' => $products[$index]['price'],
+                        'photo' => $products[$index]['photo'],
+                        'quantity' => $request->quantity
+                    ];
+                    session()->push('cart.products', $products);
+                }
+
+            }
+
+            return redirect('/cart');
+        }
     }
 
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    public function destroy(Cart $cart)
-    {
-        //
-    }
 }

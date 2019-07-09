@@ -3,7 +3,7 @@
 @section('title')
     TechHub | Cart
 @endsection
-{{-- @dd($totalPrice) --}}
+{{-- @dd($products) --}}
 @section('content')
     @if(!$products)
         <div class="already_user">
@@ -20,6 +20,7 @@
                             <!-- PRODUCT -->
                     <div class="row">
                         @foreach ($products as $product)
+                        {{-- @dd($product) --}}
                             <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="{{asset('/storage/products/' . $product['photo'])}}" alt="prewiew" width="120" height="80">
                             </div>
@@ -28,14 +29,17 @@
                             </div>
                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                    <h6><strong>{{$product['price']}} <span class="text-muted">x</span></strong></h6>
+                                    <h6><strong>$ {{number_format($product['price'] * $product['quantity']) }} <span class="text-muted">x</span></strong></h6>
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-4">
                                     <div class="quantity">
-                                        <input type="button" value="+" class="plus">
-                                        <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                            size="4">
-                                        <input type="button" value="-" class="minus">
+                                        <form class="form_quantity" action="{{route('cart.update')}}" method="POST">
+                                            @method('PATCH')
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{$product['id']}}">
+                                            <input type="number" step="1" max="99" min="1" class="product_quantity" name="quantity" value="{{$product['quantity']}}" title="Qty" class="qty" size="4">
+                                            <input type="submit" style="height:0; width:20; opacity:1;">
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -48,11 +52,6 @@
                     </div>
                     <hr>
                         <!-- END PRODUCT -->
-                    <div class="pull-right">
-                        <a href="" class="btn btn-outline-secondary pull-right">
-                            Update shopping cart
-                        </a>
-                    </div>
                 </div>
                     <div class="card-footer pull-rigth">
                         <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
@@ -70,7 +69,7 @@
                             <a href="{{url('cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
 
                             <div class="pull-right" style="margin: 5px">
-                                Total price: <b>${{$totalPrice}}</b>
+                                Total price: <b>$ {{number_format($totalPrice)}}</b>
                             </div>
                         </div>
                     </div>

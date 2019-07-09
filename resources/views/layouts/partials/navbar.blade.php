@@ -45,7 +45,6 @@
                         <i class="fas fa-shopping-cart"></i>
                         ({{ isset(session('cart')['products']) ? count(session('cart')['products']) : 0 }})
                     </a>
-                    {{-- <p>{{count(session('cart'['products'])</p> --}}
                 </li>
                 <li class="nav-item o_navlinks">
                     <a class="nav-link o_links" href="{{ url('/faq') }}"><i class="far fa-question-circle"></i> FAQ</a>

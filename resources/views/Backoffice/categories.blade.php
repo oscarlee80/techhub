@@ -35,16 +35,16 @@
                     <tr>
                         <th scope="row">{{ $category->id }}</th>
                         <td>{{ $category->name}}</td>
-                        <td><a href="/backoffice/category/{{ $category->id }}" type="" class="btn btn-success" value="" ><i class="far fa-eye"></i></a>
+                        <td><a href="/backoffice/category/{{ $category->id }}" type="" class="btn btn-outline-success" value="" ><i class="far fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="/categories/{{ $category->id }}/edit" type="" class="btn btn-primary" value="" ><i class="far fa-edit"></i></a>
+                            <a href="/categories/{{ $category->id }}/edit" type="" class="btn btn-outline-primary" value="" ><i class="far fa-edit"></i></a>
                         </td>
                         <td>
                             <form method="POST" action="/categories/{{$category->id}}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-outline-danger" value="" ><i class="far fa-trash-alt"></i></button>
                             </form>
                         </td>
                     </tr>

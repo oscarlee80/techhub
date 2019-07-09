@@ -5,7 +5,7 @@
 }
 body{
   font-family: 'Raleway', sans-serif;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #fff;
 }
 a{
