@@ -75,6 +75,7 @@ body{
   margin: 0 auto;
   max-width: 60%;
   text-align: center;
+  height: 60%;
 }
 .__comprar{
   justify-content: center;
@@ -91,7 +92,7 @@ body{
 
 .o_tituloitems{
   text-align: center;
-  font-size: 1rem;
+  font-size: 22px;
 }
 
 .o_titulodescripcion{
@@ -157,4 +158,8 @@ body{
     margin-left: 10px;
     padding-left: 0;
     margin-left: 0;
+}
+.__textoofertas{
+  text-align: center;
+  display: none
 }

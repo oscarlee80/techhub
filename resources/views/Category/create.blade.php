@@ -19,7 +19,7 @@
     <br>
     <a href="/backoffice/products" class="btn btn-dark btn-lg" role ="button" ><i class="fas fa-arrow-left"></i> Volver</a>
     <hr width="380px">
-    <h2 >N U E V O</h2>
+    <h2 >N U E V A</h2>
     <h2 >C A T E G O R Í A</h2>
     <hr width="380px">
     <form method="POST" action="" enctype="multipart/form-data">
@@ -39,7 +39,7 @@
         <br>
         <hr align="center" width="380px">
         <div class="md-form mt-0">
-            <button type="submit" class="btn btn-success btn-lg" >Agregar producto</button>
+            <button type="submit" class="btn btn-success btn-lg" >Agregar categoria</button>
         </div>
     </form>
 </div>
