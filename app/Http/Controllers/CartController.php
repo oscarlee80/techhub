@@ -23,7 +23,9 @@ class CartController extends Controller
                         'title' => $product->title,
                         'price' => $product->price,
                         'photo' => $product->photos,
-                        'quantity' => 1
+                        'quantity' => 1,
+                        'description' => $product->description
+
                     ];
                 }else{
                     return redirect()->back();
@@ -36,7 +38,8 @@ class CartController extends Controller
                 'title' => $product->title,
                 'price' => $product->price,
                 'photo' => $product->photos,
-                'quantity' => 1
+                'quantity' => 1,
+                'description' => $product->description
             ];
         }
         
@@ -106,7 +109,8 @@ class CartController extends Controller
                         'title' => $products[$index]['title'],
                         'price' => $products[$index]['price'],
                         'photo' => $products[$index]['photo'],
-                        'quantity' => $request->quantity
+                        'quantity' => $request->quantity,
+                        'description' => $products[$index]['description']
                     ];
                     session()->push('cart.products', $products);
                 }

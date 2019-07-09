@@ -15,7 +15,7 @@
         </div>      
     @else    
         <div class="container-fuid">
-            <div class="card shopping-cart" style="display:block;">
+            <div class="card __shopping-cart">
                 <div class="card-body">
                             <!-- PRODUCT -->
                     <div class="row">
@@ -26,6 +26,7 @@
                             </div>
                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                                 <h4 class="product-name"><strong>{{$product['title']}}</strong></h4>
+                                <h6>{{$product['description']}}</h6>
                             </div>
                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
@@ -54,10 +55,10 @@
                         <!-- END PRODUCT -->
                 </div>
                     <div class="card-footer pull-rigth">
-                        <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                        <div class="__coupon col-md-5 col-sm-5 no-padding-left pull-left">
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="cupone code">
+                                    <input type="text" class="form-control __coupon_numbre" placeholder="cupone code">
                                 </div>
                                 <div class="col-6">
                                     <input type="submit" class="btn btn-default" value="Use cupone">
