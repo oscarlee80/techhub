@@ -33,12 +33,12 @@
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-4">
                                     <div class="quantity">
-                                        <form class="form_quantity" action="{{route('cart.update')}}" method="POST">
+                                        <form id="form_{{$product['id']}}" product_id="{{$product['id']}}" class="form_quantity" action="{{route('cart.update')}}" method="POST">
                                             @method('PATCH')
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{$product['id']}}">
                                             <input type="number" step="1" max="99" min="1" class="product_quantity" name="quantity" value="{{$product['quantity']}}" title="Qty" class="qty" size="4">
-                                            <input type="submit" style="height:0; width:20; opacity:1;">
+                                            {{-- <input type="submit" style="height:0; width:0; opacity:1;"> --}}
                                         </form>
                                     </div>
                                 </div>

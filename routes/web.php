@@ -34,7 +34,7 @@ Route::group(['prefix' => 'cart'], function() {
     Route::get('/remove/{product_id}', 'CartController@remove')->middleware('notGuest');
     Route::get('/checkout', 'CartController@checkout')->middleware('notGuest');
     Route::get('/flush', 'CartController@flush')->middleware('notGuest');
-    Route::patch('/update', 'CartController@update')->middleware('notGuest')->name('cart.update');
+    Route::patch('/', 'CartController@update')->middleware('notGuest')->name('cart.update');
 });
 
 
