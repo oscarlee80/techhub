@@ -163,3 +163,14 @@ body{
   text-align: center;
   display: none
 }
+.product_quantity{
+    width: 40px;
+}
+.__not_login{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.__not_login p a{
+    color: rgb(54, 170, 126); 
+    font-weight: 500;
+}

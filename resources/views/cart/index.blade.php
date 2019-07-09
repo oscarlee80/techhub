@@ -6,11 +6,11 @@
 {{-- @dd($products) --}}
 @section('content')
     @if(!$products)
-        <div class="already_user">
+        <div class="__not_login">
             <h3>Su Carrito esta vacio...</h3>
             <p class="already_user">
-            Su Carrito esta vacio, inicia sesión para sicronizar los productos. 
-                <a  href="{{url('/login')}}">Iniciar sesión</a>
+            Su Carrito se encuentra vacio, inicia sesión para sicronizar los productos. 
+                <a  href="{{url('/login')}}">Iniciar sesión</a>
             </p>
         </div>      
     @else    
