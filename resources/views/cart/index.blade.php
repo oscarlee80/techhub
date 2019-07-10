@@ -19,32 +19,33 @@
                 <div class="card-body">
                             <!-- PRODUCT -->
                     <div class="row">
+                        {{-- {{ dd($products) }} --}}
                         @foreach ($products as $product)
-                        {{-- @dd($product) --}}
+                        @dd($product)
                             <div class="col-12 col-sm-12 col-md-2 text-center">
-                                <img class="img-responsive" src="{{asset('/storage/products/' . $product['photo'])}}" alt="prewiew" width="120" height="80">
+                                <img class="img-responsive" src="{{asset('/storage/products/' . $product->photos)}}" alt="prewiew" width="120" height="80">
                             </div>
                             <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                <h4 class="product-name"><strong>{{$product['title']}}</strong></h4>
-                                <h6>{{$product['description']}}</h6>
+                                <h4 class="product-name"><strong>{{$product->title}}</strong></h4>
+                                <h6>{{$product->description}}</h6>
                             </div>
                             <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                                 <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                    <h6><strong>$ {{number_format($product['price'] * $product['quantity']) }} <span class="text-muted">x</span></strong></h6>
+                                    <h6><strong>$ {{number_format($product->price * $product->quantity) }} <span class="text-muted">x</span></strong></h6>
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-4">
                                     <div class="quantity">
-                                        <form id="form_{{$product['id']}}" product_id="{{$product['id']}}" class="form_quantity" action="{{route('cart.update')}}" method="POST">
+                                        <form id="form_{{$product->id}}" product_id="{{$product->id}}" class="form_quantity" action="{{route('cart.update')}}" method="POST">
                                             @method('PATCH')
                                             @csrf
-                                            <input type="hidden" name="product_id" value="{{$product['id']}}">
-                                            <input type="number" step="1" max="99" min="1" class="product_quantity" name="quantity" value="{{$product['quantity']}}" title="Qty" class="qty" size="4">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <input type="number" step="1" max="99" min="1" class="product_quantity" name="quantity" value="{{$product->quantity}}" title="Qty" class="qty" size="4">
                                             {{-- <input type="submit" style="height:0; width:0; opacity:1;"> --}}
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 text-right">
-                                    <a href="{{url('cart/remove/' . $product['id'])}}" type="" class="btn btn-outline-danger" value="" >
+                                    <a href="{{url('cart/remove/' . $product->id)}}" type="" class="btn btn-outline-danger" value="" >
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                 </div>

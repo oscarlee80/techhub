@@ -5,66 +5,42 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+
+// use Symfony\Component\HttpFoundation\Session\Session;
+
+// use App\Session;
 
 class CartController extends Controller
 {
-    public function add($id)
+    public function add(Product $product)
     {
-        $product = Product::find($id);
-        $cartProducts = session('cart')['products'];
+        $products = session('cart.products');
 
-        if($cartProducts){
-            $keys = array_keys($cartProducts);
-            foreach ($keys as $index) {
-                if($cartProducts[$index]['id'] !== $product->id){
-                    // dd('aca');
-                    $products = [
-                        'id' => $product->id,
-                        'title' => $product->title,
-                        'price' => $product->price,
-                        'photo' => $product->photos,
-                        'quantity' => 1,
-                        'description' => $product->description
-
-                    ];
-                }else{
-                    return redirect()->back();
-                }
-            }
-            
-        }else {
-            $products = [
-                'id' => $product->id,
-                'title' => $product->title,
-                'price' => $product->price,
-                'photo' => $product->photos,
-                'quantity' => 1,
-                'description' => $product->description
-            ];
+        if (isset($products[$product->id])) {
+            $products[$product->id]['quantity'] = 1;
         }
-        
+        $products[$product->id]['quantity'] = 1;
+        $products[$product->id] = $product;
 
-        session()->push('cart.products', $products);
+        session()->put('cart.products', $products);
 
-        return redirect(url('/'));
-
+        return redirect('/');
     }
 
     public function index(Request $request)
     {
-        $products = session('cart')['products'];
-        
-        $total = [];
-
-        if ($products) { 
-            $products = $request->session()->get('cart.products');
-            $keys = array_keys($products);
-
-            foreach ($keys as $index) {
-                array_push($total, $products[$index]['price'] * $products[$index]['quantity']);
-            }
+        if (!session()->has('cart.products')) {
+            session()->put('cart.products', []);
         }
-        $totalPrice = array_sum($total);
+        
+        $products = collect(session('cart')['products']);
+
+        // dd($products);
+
+        $totalPrice = $products->sum('subtotal');
+
+        // dd($totalPrice);
 
         return view('cart.index')
                 ->with('products', $products)
@@ -73,12 +49,12 @@ class CartController extends Controller
 
     public function remove($id, Request $request)
     {
-        $products = $request->session()->get('cart.products');
+        $products = session()->get('cart.products');
         $keys = array_keys($products);
 
         foreach($keys as $index){
             if($products[$index]['id'] == $id){
-                $request->session()->forget('cart.products.' . $index);
+                session()->forget('cart.products.' . $index);
             }
         }
 
@@ -95,31 +71,27 @@ class CartController extends Controller
     public function update(Request $request)
     {   
         // dd($request->all());
-        $cartProducts = session('cart')['products'];
+        $cartProducts = collect(session('cart.products'));
+
+        $updated = collect([]);
 
         if ($cartProducts) {
-            $products = $request->session()->get('cart.products');
-            $keys = array_keys($products);
-
-            foreach ($keys as $index) {
-                if ($products[$index]['id'] == $request->product_id) {
-                    $this->remove($request->product_id,  $request);
-                    $products = [
-                        'id' => $products[$index]['id'],
-                        'title' => $products[$index]['title'],
-                        'price' => $products[$index]['price'],
-                        'photo' => $products[$index]['photo'],
-                        'quantity' => $request->quantity,
-                        'description' => $products[$index]['description']
-                    ];
-                    session()->push('cart.products', $products);
+            foreach ($cartProducts as $value) {
+                if ($value->id == $request->product_id) {
+                    $value->quantity = $request->quantity;
+                    $value->subtotal = $request->quantity * $value['price'];
                 }
 
+                $updated->push($value);
             }
-
-            // return response()->json(['success' => true]);
-            return redirect('/cart');
         }
+
+        // dd($updated);
+
+        // dd($cartProducts);
+        session()->put('cart.products', $updated);
+
+        return redirect('/cart');
     }
 
 }
