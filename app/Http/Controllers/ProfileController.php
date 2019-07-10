@@ -20,7 +20,20 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
 
+        
+
         if($request->first_name){
+
+            // dd('caca');
+            $rules = [
+            'first_name' => 'alpha'
+            ];
+
+            $message = [
+                'first_name.alpha' => 'Ingresar solo letras'
+            ];
+
+            $this->validate($request, $rules, $message);
 
             $first_name = ucwords(strtolower($request->first_name));
 
@@ -38,6 +51,16 @@ class ProfileController extends Controller
         }
 
         if ($request->last_name) {
+
+            $rules = [
+                'last_name' => 'alpha'
+            ];
+
+            $message = [
+                'last_name.alpha' => 'Ingresar solo letras'
+            ];
+
+            $this->validate($request, $rules, $message);
 
             $last_name = ucwords(strtolower($request->last_name));
 

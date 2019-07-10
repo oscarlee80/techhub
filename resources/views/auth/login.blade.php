@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="signup_section">
-                <div class="form_content">
+                {{-- <div class="form_content">
                     <form class="form_signup" action="{{ route('login') }}" method="POST">
                         @csrf
 
@@ -48,7 +48,42 @@
                             @enderror
 
                         </div>
+                        <div class="remmember form-check">
+                            <input class="remmember_checkbox form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
                         <input class="submit_button" type="submit" name="" value="Ingresar">
+                    </form>
+                </div> --}}
+                <div class="form_content">
+                    <form class="form_signup" action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <div class="email">
+                            <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" required value="{{ old('email') }}" autofocus>
+                            <label>Email</label>
+                            @error('email')
+                                <span class="errores" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="pass">
+                            <input class="input_change @error('password') is-invalid @enderror" type="password" name="password" required value="">
+                            <label>Contraseña</label>
+                            @error('password')
+                                <span class="errores" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="remmember">
+                            <input class="remmember_checkbox" type="checkbox" name="remember" value="Recuerdame">Recuérdame
+                            <a href="#">¿Olvido su Contraseña?</a>
+                        </div>
+                        <input class="submit_button" type="submit" name="" value="Iniciar Sesión">
                     </form>
                 </div>
                 <div class="divider">

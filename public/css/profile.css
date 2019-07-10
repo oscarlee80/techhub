@@ -192,10 +192,10 @@ a
 }
 ._errors{
      color: rgb(247, 42, 27);
-     position: absolute;
+     /* position: absolute; */
      z-index: 998;
-     bottom: 30px;
-     right: 58px;
+     bottom: 33%;
+     left: 20px;
      font-size: 12.5px;
 }
 

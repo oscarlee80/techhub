@@ -28,7 +28,11 @@
                                     @csrf
                                     <input class="input_change" type="text" name="first_name" required value="" autofocus>
                                     <div class="_errors">
-                                        
+                                        @error('first_name')
+                                        <span class="errores" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
@@ -50,7 +54,11 @@
                                     @csrf
                                     <input class="input_change" type="text" name="last_name" required value="" autofocus>
                                     <div class="_errors">
-                                        
+                                        @error('last_name')
+                                        <span class="errores" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
