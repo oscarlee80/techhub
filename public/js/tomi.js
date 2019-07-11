@@ -15,19 +15,24 @@ window.onload = ()=>
 
     productsHover = () =>
     {
-        const products = document.querySelectorAll('.__itemoferta')
+        const products = document.querySelectorAll('.__cards')
+        // console.log(products);
+        
 
         Array.from(products).forEach(function(element){
             element.addEventListener('mouseover', function () {
-                let description = element.querySelector('.__textoofertas').style.display="block";                
+                let description = element.querySelector('.__textoofertas').style.display="flex";
+                let price = element.querySelector('.__comprar').style.position="unset"
             })
             element.addEventListener('mouseout', function () {
                 let description = element.querySelector('.__textoofertas').style.display = "none";
+                let price = element.querySelector('.__comprar').style.position = "absolute"
+
             })
         })
     }
 
-    console.log(productsHover());
+    productsHover()
 
     
 }  
