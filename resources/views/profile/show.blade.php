@@ -1,4 +1,7 @@
 @extends('layouts.onlyNav')
+@section('title')
+    TechHub | Perfil
+@endsection
 
 @section('content')
 {{-- @dd(auth()->user()->first_name) --}}

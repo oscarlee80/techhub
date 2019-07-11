@@ -66,6 +66,7 @@
     <hr>
     <div class="already_user" align="center">
             <a class="btn btn-dark" href="{{route ('backoffice') }}" role ="button" style="color:white"><i class="fas fa-arrow-left"></i></a>
+            <a class="btn btn-primary" href="{{route ('exportUsers') }}" role ="button" style="color:white"><i class="fas fa-file-download"></i></a>
         </div>
         <hr>
         {{ $users->links() }}

@@ -56,6 +56,8 @@
         <div class="already_user" align="center">
             <a class="btn btn-dark" href="{{route ('backoffice') }}" role ="button" style="color:white"><i class="fas fa-arrow-left"></i></a>
             <a class="btn btn-success" href="{{route ('addProduct') }}" role ="button" style="color:white"><i class="fas fa-plus-square"></i></a>
+            <a class="btn btn-primary" href="{{route ('exportProducts') }}" role ="button" style="color:white"><i class="fas fa-file-download"></i></a>
+            
         </div>
         <hr>
         {{ $products->links() }}

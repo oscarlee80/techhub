@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-
 use App\Category;
-
 use Illuminate\Http\File;
-
 use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -130,4 +126,6 @@ class ProductController extends Controller
         $product = Product::destroy($id);
         return redirect("/backoffice/products");
     }
+
+    
 }

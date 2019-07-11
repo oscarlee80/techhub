@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Product;
-
 use App\Category;
-
 use App\User;
+use App\Exports\ProductsExport;
+use App\Exports\UsersExport;
+use App\Exports\CategoriesExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class BackOfficeController extends Controller
 {
@@ -122,5 +124,23 @@ class BackOfficeController extends Controller
     {
         $user = User::destroy($id);
         return redirect("/backoffice/users");
+    }
+
+    public function exportProducts()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+        return redirect("/backoffice/products");
+    }
+
+    public function exportUsers()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+        return redirect("/backoffice/users");
+    }
+
+    public function exportCategories()
+    {
+        return Excel::download(new CategoriesExport, 'categories.xlsx');
+        return redirect("/backoffice/categories");
     }
 }
