@@ -5,7 +5,7 @@
 @endsection
 {{-- @dd($products) --}}
 @section('content')
-    @if(!$products)
+    @if(count($products) == 0)
         <div class="__not_login">
             <h3>Su Carrito esta vacio...</h3>
             <p class="already_user">
@@ -21,7 +21,7 @@
                     <div class="row">
                         {{-- {{ dd($products) }} --}}
                         @foreach ($products as $product)
-                        @dd($product)
+                        {{-- @dd($product) --}}
                             <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="{{asset('/storage/products/' . $product->photos)}}" alt="prewiew" width="120" height="80">
                             </div>

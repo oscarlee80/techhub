@@ -11,7 +11,7 @@ window.onload = ()=>
             })
         })
     }
-    console.log(cartQuantity());
+    cartQuantity();
 
     productsHover = () =>
     {

@@ -15,17 +15,28 @@ class CartController extends Controller
 {
     public function add(Product $product)
     {
-        $products = session('cart.products');
+        $products = collect(session('cart.products'));
 
-        if (isset($products[$product->id])) {
-            $products[$product->id]['quantity'] = 1;
+        $product->quantity = 1;
+
+        if(count($products) !== 0){
+            
+            foreach ($products as $value) {
+                if ($value->id == $product->id) {
+                    $product->quantity = $value->quantity + 1;
+                }
+                $products[$product->id] = $product;
+            }
+
+        }else{
+            $products[$product->id] = $product;
         }
-        $products[$product->id]['quantity'] = 1;
-        $products[$product->id] = $product;
+
+        $product->subtotal = $product->quantity * $product->price;
 
         session()->put('cart.products', $products);
 
-        return redirect('/');
+        return redirect('/cart');
     }
 
     public function index(Request $request)
@@ -34,13 +45,9 @@ class CartController extends Controller
             session()->put('cart.products', []);
         }
         
-        $products = collect(session('cart')['products']);
-
-        // dd($products);
+        $products = collect(session('cart.products'));
 
         $totalPrice = $products->sum('subtotal');
-
-        // dd($totalPrice);
 
         return view('cart.index')
                 ->with('products', $products)
@@ -49,12 +56,11 @@ class CartController extends Controller
 
     public function remove($id, Request $request)
     {
-        $products = session()->get('cart.products');
-        $keys = array_keys($products);
+        $products = session('cart.products');
 
-        foreach($keys as $index){
-            if($products[$index]['id'] == $id){
-                session()->forget('cart.products.' . $index);
+        foreach($products as $value){
+            if($products[$value->id]->id == $id){
+                session('cart.products')->forget($id);
             }
         }
 
@@ -70,7 +76,6 @@ class CartController extends Controller
 
     public function update(Request $request)
     {   
-        // dd($request->all());
         $cartProducts = collect(session('cart.products'));
 
         $updated = collect([]);
@@ -81,14 +86,10 @@ class CartController extends Controller
                     $value->quantity = $request->quantity;
                     $value->subtotal = $request->quantity * $value['price'];
                 }
-
-                $updated->push($value);
+                $updated->put($value->id, $value);
             }
         }
 
-        // dd($updated);
-
-        // dd($cartProducts);
         session()->put('cart.products', $updated);
 
         return redirect('/cart');
