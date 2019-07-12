@@ -47,7 +47,7 @@ class CartController extends Controller
         if (!session()->has('cart.products')) {
             session()->put('cart.products', []);
         }
-        // dd(collect(session('cart.products')));
+
         $user = User::find(auth()->user()->id);
 
         $cartProducts = json_decode($user->cart, true);
@@ -55,22 +55,15 @@ class CartController extends Controller
         $updated = collect([]);
 
         foreach($cartProducts as $product){
-            // dd($updated);
             $object = (object) $product;
-            // dd($product);
-            // dd($object->id);
             $updated->put($object->id, $object);
-            // dd($updated);
         }
-
-        // dd($updated);
 
         session()->put('cart.products', $updated);
         
         $products = collect(session('cart.products'));
         
         $totalPrice = $products->sum('subtotal');
-        // dd($totalPrice);
 
         return view('cart.index')
                 ->with('products', $products)
@@ -98,7 +91,7 @@ class CartController extends Controller
         $request->session('cart.products')->forget('cart');
 
         $this->saveCart();
-        
+
         return redirect('/cart');
     }
 
@@ -134,8 +127,6 @@ class CartController extends Controller
         DB::table('users')
             ->where('id', auth()->user()->id)
             ->update(['cart' => $jsonCart]);
-
-        // $pollo = collect(json_decode($jsonCart, true));
     }
 
 }
