@@ -37,7 +37,7 @@ TechHub
                 </div>
                 <h2 class="o_tituloitems">{{ $product->title }}</h2>
                 <p class="__textoofertas">{{$product->description}}</p>
-                <a href="#" class="d-flex btn btn-primary __comprar">{{$product->price}}</a>
+                <a href="{{url('cart/add/' . $product->id)}}" class="d-flex btn btn-primary __comprar">{{$product->price}}</a>
             </div>
         @endforeach
         @endif

@@ -40,7 +40,7 @@ Route::group(['prefix' => 'cart'], function() {
 
 Route::group(['prefix' => 'backoffice'], function () {
     Route::get('/', 'BackOfficeController@index')->middleware('admin')->name('backoffice');
-    
+
     Route::get('/products', 'BackOfficeController@products')->middleware('admin')->name('productCrud');
     Route::get('/products/export', 'BackOfficeController@exportProducts')->middleware('admin')->name('exportProducts');
     Route::get('/product/{id}', 'BackOfficeController@showProduct')->middleware('admin');

@@ -36,7 +36,7 @@ class CartController extends Controller
 
         session()->put('cart.products', $products);
 
-        return redirect('/cart');
+        return redirect()->back();
     }
 
     public function index(Request $request)
