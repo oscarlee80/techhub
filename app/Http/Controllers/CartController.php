@@ -70,7 +70,7 @@ class CartController extends Controller
 
     public function flush(Request $request)
     {
-        $request->session('cart.products')->flush();
+        $request->session('cart.products')->forget('cart');
         return redirect('/cart');
     }
 
