@@ -14,6 +14,8 @@
             </p>
         </div>      
     @else    
+    
+
         <div class="container-fuid">
             <div class="card __shopping-cart">
                 <div class="card-body">

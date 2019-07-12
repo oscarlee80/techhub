@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\User;
+use DB;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-
+use function GuzzleHttp\json_decode;
 // use Symfony\Component\HttpFoundation\Session\Session;
-
 // use App\Session;
 
 class CartController extends Controller
@@ -36,6 +37,8 @@ class CartController extends Controller
 
         session()->put('cart.products', $products);
 
+        $this->saveCart();
+
         return redirect()->back();
     }
 
@@ -44,10 +47,30 @@ class CartController extends Controller
         if (!session()->has('cart.products')) {
             session()->put('cart.products', []);
         }
+        // dd(collect(session('cart.products')));
+        $user = User::find(auth()->user()->id);
+
+        $cartProducts = json_decode($user->cart, true);
+
+        $updated = collect([]);
+
+        foreach($cartProducts as $product){
+            // dd($updated);
+            $object = (object) $product;
+            // dd($product);
+            // dd($object->id);
+            $updated->put($object->id, $object);
+            // dd($updated);
+        }
+
+        // dd($updated);
+
+        session()->put('cart.products', $updated);
         
         $products = collect(session('cart.products'));
-
+        
         $totalPrice = $products->sum('subtotal');
+        // dd($totalPrice);
 
         return view('cart.index')
                 ->with('products', $products)
@@ -64,6 +87,8 @@ class CartController extends Controller
             }
         }
 
+        $this->saveCart();
+
         return redirect(url('/cart'));
 
     }
@@ -71,6 +96,9 @@ class CartController extends Controller
     public function flush(Request $request)
     {
         $request->session('cart.products')->forget('cart');
+
+        $this->saveCart();
+        
         return redirect('/cart');
     }
 
@@ -84,7 +112,7 @@ class CartController extends Controller
             foreach ($cartProducts as $value) {
                 if ($value->id == $request->product_id) {
                     $value->quantity = $request->quantity;
-                    $value->subtotal = $request->quantity * $value['price'];
+                    $value->subtotal = $request->quantity * $value->price;
                 }
                 $updated->put($value->id, $value);
             }
@@ -92,7 +120,22 @@ class CartController extends Controller
 
         session()->put('cart.products', $updated);
 
+        $this->saveCart();
+
         return redirect('/cart');
+    }
+
+    public function saveCart()
+    {
+        $products = collect(session('cart.products'));
+
+        $jsonCart = $products->toJson();
+
+        DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->update(['cart' => $jsonCart]);
+
+        // $pollo = collect(json_decode($jsonCart, true));
     }
 
 }
