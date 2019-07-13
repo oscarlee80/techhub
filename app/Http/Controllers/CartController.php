@@ -118,7 +118,7 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function saveCart()
+    public static function saveCart()
     {
         $products = collect(session('cart.products'));
 
