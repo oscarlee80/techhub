@@ -29,12 +29,12 @@ Route::group(['prefix' => 'categories'], function() {
 });
 
 Route::group(['prefix' => 'cart'], function() {
-    Route::get('/', 'CartController@index');
-    Route::get('/add/{product}', 'CartController@add')->middleware('notGuest');
-    Route::get('/remove/{product_id}', 'CartController@remove')->middleware('notGuest');
-    Route::get('/checkout', 'CartController@checkout')->middleware('notGuest');
-    Route::get('/flush', 'CartController@flush')->middleware('notGuest');
-    Route::patch('/', 'CartController@update')->middleware('notGuest')->name('cart.update');
+    Route::get('/', 'CartController@index')->middleware('cartSession');
+    Route::get('/add/{product}', 'CartController@add')->middleware('notGuest', 'cartSession');
+    Route::get('/remove/{product_id}', 'CartController@remove')->middleware('notGuest', 'cartSession');
+    Route::get('/checkout', 'CartController@checkout')->middleware('notGuest', 'cartSession');
+    Route::get('/flush', 'CartController@flush')->middleware('notGuest', 'cartSession');
+    Route::patch('/', 'CartController@update')->middleware('notGuest', 'cartSession')->name('cart.update');
 });
 
 

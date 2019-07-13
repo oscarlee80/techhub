@@ -44,22 +44,22 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        if (!session()->has('cart.products')) {
-            session()->put('cart.products', []);
+
+        if(auth()->user()){
+
+            $user = User::find(auth()->user()->id);
+    
+            $cartProducts = json_decode($user->cart, true);
+    
+            $updated = collect([]);
+    
+            foreach($cartProducts as $product){
+                $object = (object) $product;
+                $updated->put($object->id, $object);
+            }
+    
+            session()->put('cart.products', $updated);
         }
-
-        $user = User::find(auth()->user()->id);
-
-        $cartProducts = json_decode($user->cart, true);
-
-        $updated = collect([]);
-
-        foreach($cartProducts as $product){
-            $object = (object) $product;
-            $updated->put($object->id, $object);
-        }
-
-        session()->put('cart.products', $updated);
         
         $products = collect(session('cart.products'));
         
