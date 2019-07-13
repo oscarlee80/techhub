@@ -63,6 +63,10 @@ Route::group(['prefix' => 'profile'], function () {
     Route::patch('/{id}', 'ProfileController@update');
 });
 
+Route::group(['prefix' => 'checkout'], function () {
+    Route::get('/', 'CheckoutController@index');
+});
+
 
 
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
