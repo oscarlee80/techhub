@@ -34,5 +34,4 @@ window.onload = ()=>
 
     productsHover()
 
-    
 }  
