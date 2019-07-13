@@ -72,8 +72,16 @@
                             <a href="" class="btn btn-success pull-right">Checkout</a>
                             <a href="{{url('cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
 
-                            <div class="pull-right" style="margin: 5px">
-                                Total price: <b>$ {{number_format($totalPrice)}}</b>
+                            <div class="pull-right __cart_sum" style="margin: 5px">
+                                <p>
+                                    Tax: <b>$ {{number_format(0)}}</b>;
+                                </p>
+                                <p>
+                                    Discounts: <b>$ {{number_format(0)}}</b>;
+                                </p>
+                                <p>
+                                    Total price: <b>$ {{number_format($totalPrice)}}</b>
+                                </p>
                             </div>
                         </div>
                     </div>
