@@ -9,6 +9,9 @@ body{
   /* overflow-x: hidden; */
   /* overflow: scroll; */
 }
+a:hover{
+    color: rgb(52, 180, 131);
+}
 .container-fluid{
   padding: 0;
 }
