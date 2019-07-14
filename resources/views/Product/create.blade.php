@@ -81,7 +81,7 @@ Nuevo Producto
         <br>
         <label class="file">
             <input type="file" id="file" name="photos[]" multiple="multiple" aria-label="File browser example">
-            <span class="file-custom"></span>
+            <span class="file-custom" id="fileUpload_name"></span>
         </label>
 
         @error('photos')

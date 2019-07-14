@@ -51,4 +51,19 @@ window.onload = ()=>
         }
     // }
    
+
+//    SHOW FILE NAME INSIDE INPUT FILE
+
+    let input_file = document.getElementById('file');
+    let file_name = document.getElementById('fileUpload_name');
+
+    input_file.addEventListener( 'change', showFileName );
+
+    function showFileName( event ) {
+
+        let input = event.srcElement;
+        let fileName = input.files[0].name;
+        file_name.innerHTML = fileName
+    }
+    
 }  
