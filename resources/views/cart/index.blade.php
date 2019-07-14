@@ -15,7 +15,7 @@
     @else    
         <div class="container-fuid">
             <div class="card __shopping-cart">
-                <div class="__title">
+                <div class="__cart_title">
                     <h2>
                         Carrito de Compras
                     </h2>

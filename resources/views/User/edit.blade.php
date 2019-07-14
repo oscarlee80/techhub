@@ -91,7 +91,7 @@
             <br>
             <label class="file">
                     <input type="file" id="file" name="avatar" aria-label="File browser example">
-                    <span class="file-custom"></span>
+                    <span class="file-custom" id="fileUpload_name"></span>
                 </label>
         
                 @error('avatar')

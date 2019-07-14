@@ -94,7 +94,7 @@
         <br>
         <label class="file">
             <input multiple="multiple" type="file" id="file" name="photos[]" aria-label="File browser example">
-            <span class="file-custom"></span>
+            <span class="file-custom" id="fileUpload_name"></span>
         </label>
 
         @error('photos')
@@ -102,7 +102,7 @@
         <span class="errores" role="alert" style="color:red">
             <strong>{{ $message }}</strong>
         </span>
-    @enderror
+        @enderror
 
         <br>
         <br>
