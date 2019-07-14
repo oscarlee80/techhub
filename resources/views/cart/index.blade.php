@@ -65,8 +65,8 @@
                         </div>
                     </div>
                     <div class="pull-right" style="margin: 10px">
-                        <a href="" class="btn btn-success pull-right">Checkout</a>
-                        <a href="{{url('cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
+                        <a href="{{url('/checkout/shipping')}}" class="btn btn-success pull-right">Checkout</a>
+                        <a href="{{url('/cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
 
                         <div class="pull-right __cart_sum" style="margin: 5px">
                             <p>

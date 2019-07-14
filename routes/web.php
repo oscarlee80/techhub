@@ -64,7 +64,12 @@ Route::group(['prefix' => 'profile'], function () {
 });
 
 Route::group(['prefix' => 'checkout'], function () {
-    Route::get('/', 'CheckoutController@index');
+    Route::get('/', 'CheckoutController@finalCheckout')->name('finalCheckout');
+    Route::get('/summary', 'CheckoutController@index');
+    Route::get('/shipping', 'CheckoutController@shipping');
+    Route::post('/shipping', 'CheckoutController@saveShipping')->name('checkoutShipping');
+    Route::get('/payment', 'CheckoutController@payment');
+    Route::post('/payment', 'CheckoutController@savePayment')->name('checkoutProduct');
 });
 
 

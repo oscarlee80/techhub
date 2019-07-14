@@ -1,0 +1,147 @@
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+body{
+  font-family: 'Raleway', sans-serif;
+  /* overflow: hidden; */
+  background-color: #fff;
+}
+.__checkout{
+    overflow: hidden;
+}
+.container_signup{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+}
+.form_header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup_title{
+  font-size: 50px;
+  font-weight: 300;
+}
+.signup_section{
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  width: 100%;
+}
+.form_signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 36px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.form_content{
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  width: 84%;
+  justify-content: center;
+}
+.nombre-apellido{
+	width: 320px;
+	display: flex;
+	justify-content: space-between;
+}
+.zip_code .input_change{
+	width: 220px;
+}
+.address_number .input_change{
+    width: 70px;
+}
+.expired .input_change{
+	width: 180px;
+}
+.cvv .input_change{
+    width: 90px;
+}
+
+.input_change{
+  width: 320px;;
+  margin-bottom: 35px;
+  padding: 5px 0;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  position: relative;
+}
+.form_content div{
+  margin: 0;
+  position: relative;
+}
+.form_content div label{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  transition: .3s;
+  pointer-events: none;
+}
+.input_change:focus ~ label,
+.input_change:valid ~ label{
+  top: -12px;
+  left: 0;
+  color: rgb(52, 180, 131);
+  font-size: 12px;
+  font-weight: bold;
+}
+.input_change:focus,
+.input_change:valid{
+  border-bottom: 1px solid rgb(52, 180, 131);
+}
+
+
+
+
+
+
+
+/* feDropShadowds
+descds
+descd
+dds
+ */
+.form_signup select{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    padding: 0 50px 0 20px;
+    cursor: pointer;
+    text-indent: 5px;
+}
+
+.form_signup .select{
+    position: relative;
+    background: #fff;
+    border: 1px solid #34b483;
+    height: 50px;
+    cursor: pointer;
+}
+
+.form_signup .select:before{
+    content: '';
+    background: #34b483;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    pointer-events: none;
+
+}

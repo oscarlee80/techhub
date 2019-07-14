@@ -45,7 +45,7 @@ class CartController extends Controller
     public function index(Request $request)
     {
 
-        if(auth()->user()){
+        if(auth()->user() && auth()->user()->cart){
 
             $user = User::find(auth()->user()->id);
     

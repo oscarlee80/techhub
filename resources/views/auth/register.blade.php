@@ -39,7 +39,7 @@
 
                             </div>
                             <div class="apellido">
-                                <input class="input_change @error('last') is-invalid @enderror" type="text" name="last_name" required value="{{ old('last_name') }}">
+                                <input class="input_change @error('last_name') is-invalid @enderror" type="text" name="last_name" required value="{{ old('last_name') }}">
                                 <label>Apellido</label>
                                 
                                 @error('last_name')
