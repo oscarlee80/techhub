@@ -214,6 +214,7 @@ body{
     max-width:100%;
     max-height:100%;
 }
+<<<<<<< HEAD
 
 .__productImage {
     width:400px;
@@ -238,5 +239,15 @@ body{
 }
 .__agregar:hover{
   background-color:black;
+=======
+.__cart_sum{
+    display: flex;
+    flex-direction: column;
+    line-height: 70%;
+    margin-top: 17px !important;
+}
+.__separador{
+    width: 80%;
+>>>>>>> 8737157685b3fb6bf05ea774946fd7167d32ab6d
 }
 
