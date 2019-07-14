@@ -28,7 +28,7 @@
 
                         <div class="nombre-apellido">
                             <div class="name">
-                                <input class="input_change @error('first_name') is-invalid @enderror" type="text" name="first_name" required value="{{ old('first_name') }}" autofocus>
+                                <input class="input_change @error('first_name') is-invalid @enderror" type="text" name="first_name" onblur="this.holaHola()" required value="{{ old('first_name') }}" autofocus >
                                 <label>Nombre</label>
 
                                 @error('first_name')
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="email">
-                            <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" required value="{{ old('email') }}">
+                            <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" onblur="empty(this)" required value="{{ old('email') }}">
                             <label>Email</label>
 
                             @error('email')

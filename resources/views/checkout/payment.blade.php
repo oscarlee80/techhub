@@ -1,4 +1,4 @@
-@extends('layouts.onlyNav')
+@extends('layouts.checkout')
 
 @section('title')
     TechHub | Payments

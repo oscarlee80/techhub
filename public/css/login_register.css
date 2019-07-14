@@ -90,7 +90,20 @@ a{
 .name .input_change, .apellido .input_change{
 	width: 144px;
 }
+.name .input_change_error, .apellido .input_change_error{
+	width: 144px;
+}
 .input_change{
+  width: 320px;;
+  margin-bottom: 35px;
+  padding: 5px 0;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  position: relative;
+}
+.input_change_error{
   width: 320px;;
   margin-bottom: 35px;
   padding: 5px 0;
@@ -119,9 +132,21 @@ a{
   font-size: 12px;
   font-weight: bold;
 }
+.input_change_error:focus ~ label,
+.input_change_error:valid ~ label{
+  top: -12px;
+  left: 0;
+  color: rgb(247, 42, 27);
+  font-size: 12px;
+  font-weight: bold;
+}
 .input_change:focus,
 .input_change:valid{
   border-bottom: 1px solid rgb(52, 180, 131);
+}
+.input_change_error:focus,
+.input_change_error:valid{
+  border-bottom: 1px solid rgb(247, 42, 27);
 }
 .description textarea
 {

@@ -1,5 +1,7 @@
 window.onload = ()=>
 {
+    // UPDATE PRODUCT QUANTITY IN CART
+
     cartQuantity = () =>
     {
         const className = document.querySelectorAll('.product_quantity')
@@ -13,11 +15,11 @@ window.onload = ()=>
     }
     cartQuantity();
 
+    // DISPLAY DESCRIPTION ON PRODUCT'S CARD
+
     productsHover = () =>
     {
         const products = document.querySelectorAll('.__cards')
-        // console.log(products);
-        
 
         Array.from(products).forEach(function(element){
             element.addEventListener('mouseover', function () {
@@ -34,13 +36,19 @@ window.onload = ()=>
 
     productsHover()
 
+    // LOGIN & REGISTER VALIDATION
 
-
-    // ddsvds
-    // sdf
-    // sf
-    // dsf
-    // dsf
-
-    
+    // function validateLoginRegister()
+    // {
+        function holaHola()
+        {
+            console.log('la concha de tu puta madreeeeeeee');
+            if(!element.value){
+                element.className = "input_change_error"
+            }else{
+                element.className = "input_change"
+            }
+        }
+    // }
+   
 }  

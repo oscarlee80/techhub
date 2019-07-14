@@ -115,7 +115,7 @@ descds
 descd
 dds
  */
-.form_signup select{
+/* .form_signup select{
     width: 100%;
     height: 100%;
     background: none;
@@ -144,7 +144,7 @@ dds
     width: 40px;
     pointer-events: none;
 
-}
+} */
 .__title{
     width: 100%;
     display: flex;
