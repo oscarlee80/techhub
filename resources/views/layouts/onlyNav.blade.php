@@ -9,7 +9,6 @@
     {{-- Neustros Estilos --}}
     {{-- <link href="{{ asset('css/login_register.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/styles-adriano.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 
