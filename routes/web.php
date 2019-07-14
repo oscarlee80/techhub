@@ -14,6 +14,7 @@ Route::group(['prefix' => 'products'], function() {
     Route::post('/create', 'ProductController@store')->middleware('admin');
     Route::get('/{id}/edit', 'ProductController@edit')->middleware('admin');
     Route::patch('/{id}/edit', 'ProductController@update')->middleware('admin');
+    Route::get('/{id}', 'ProductController@show');
     Route::delete('/{id}', 'ProductController@destroy')->middleware('admin');
     Route::get('/{id}', 'ProductController@show');
 });

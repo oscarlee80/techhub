@@ -13,11 +13,15 @@ use Illuminate\Support\Arr;
 
 class CartController extends Controller
 {
-    public function add(Product $product)
+    public function add(Product $product, Request $request)
     {
         $products = collect(session('cart.products'));
 
-        $product->quantity = 1;
+        if ($request->quantity) {
+            $product->quantity = $request->quantity;
+        } else {
+            $product->quantity = 1;
+        }
 
         if(count($products) !== 0){
             

@@ -54,12 +54,15 @@ class ProductController extends Controller
         //         'product_id' => $request->product_id,
         //         'path' => $filename
         //     ]);
-        // }
-
-        $photos = $request->file('photos')->store('products', 'public');
-        $filename = basename($photos);
+        // }        
+        $filename = [];
+        foreach ($request->photos as $photo) {
+            $photos = $photo->store('products', 'public');
+            $filename[] = basename($photos);
+        }
+        $photos = json_encode($filename);
         $product = new Product($request->all());
-        $product->photos = $filename;
+        $product->photos = $photos;
         $product->save();
         return redirect('/backoffice/products');
     
@@ -67,8 +70,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
-    $product = Products::find($id);
-    return view('product.show')->with('product$product', $product);
+    $product = Product::find($id);
+    return view('product.show')->with('product', $product);
     }
 
     public function edit($id)
@@ -110,10 +113,18 @@ class ProductController extends Controller
     $product->trending = $request->input('trending') !== $product->trending ? $request->input('trending') : $product->trending;
 
     if ($request->file('photos') !== null) {
-        unlink("storage/products/".$product->photos);
-        $photos = $request->file('photos')->store('products', 'public');
-        $filename = basename($photos);
-        $product->photos = $filename;
+        if ($product->photos !==null ) {
+            foreach ($product->photos() as $photo) {
+                unlink("storage/products/".$photo);
+            }
+        }
+        $filename = [];
+        foreach ($request->file('photos') as $photo) {
+            $photos = $photo->store('products', 'public');
+            $filename[] = basename($photos);
+        }
+        $photos = json_encode($filename);
+        $product->photos = $photos;
     }
 
     $product->save();

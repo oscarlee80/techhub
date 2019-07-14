@@ -16,7 +16,7 @@
 </header>
 <div align="center">
     <div align="center" class="card" style="width: 18rem;">
-        <img class="card-img-top" src="/storage/products/{{ $product->photos }}" alt="Card image cap">
+        <img class="card-img-top" src="/storage/products/{{ $product->defaultImage() }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ $product->title}}</h5>
             <p class="card-text">Descripcion : {{ $product->description}}</p>
