@@ -80,7 +80,7 @@ Nuevo Producto
         </div>
         <br>
         <label class="file">
-            <input type="file" id="file" name="photos" aria-label="File browser example">
+            <input type="file" id="file" name="photos[]" multiple="multiple" aria-label="File browser example">
             <span class="file-custom"></span>
         </label>
 

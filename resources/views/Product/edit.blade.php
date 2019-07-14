@@ -93,7 +93,7 @@
         <label for="">Foto</label>
         <br>
         <label class="file">
-            <input type="file" id="file" name="photos" aria-label="File browser example">
+            <input multiple="multiple" type="file" id="file" name="photos[]" aria-label="File browser example">
             <span class="file-custom"></span>
         </label>
 
