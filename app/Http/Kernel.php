@@ -63,7 +63,8 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'superAdmin' => \App\Http\Middleware\SuperAdmin::class,
         'notGuest' => \App\Http\Middleware\AuthUser::class,
-        'cartSession' => \App\Http\Middleware\CreateCartSession::class
+        'cartSession' => \App\Http\Middleware\CreateCartSession::class,
+        'checkout' => \App\Http\Middleware\Checkout::class
     ];
 
     /**
