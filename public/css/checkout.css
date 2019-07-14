@@ -145,3 +145,15 @@ dds
     pointer-events: none;
 
 }
+.__title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 18px 0 30px 0;
+    font-weight: 600;
+    font-size: 40px;
+}
+.__shipping{
+    flex-direction: column;
+    width: 100%;
+}

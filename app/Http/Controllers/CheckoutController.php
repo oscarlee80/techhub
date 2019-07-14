@@ -48,17 +48,18 @@ class CheckoutController extends Controller
     {
         $products = session('cart.products');
 
+        
         $totalPrice = $products->sum('subtotal');
-
+        
         $shipping = session('cart.shipping');
-
+        
         $payment = session('cart.payment');
 
         return view('checkout.index')
-            ->with($products)
-            ->with($shipping)
-            ->with($payment)
-            ->with($totalPrice);
+            ->with('products', $products)
+            ->with('shipping', $shipping)
+            ->with('payment', $payment)
+            ->with('totalPrice', $totalPrice);
     }
 
     public function shipping()
@@ -88,7 +89,7 @@ class CheckoutController extends Controller
         $this->validate($request, $rules, $message);
         // dd('hola');
         
-        $jsonShipping = json_encode($request->all());
+        $jsonShipping = $request->all();
 
         if (!session()->has('cart.shipping')) {
             session()->put('cart.shipping', []);
@@ -116,7 +117,7 @@ class CheckoutController extends Controller
             session()->put('cart.payment', []);
         }
 
-        $jsonPayment = json_encode($request->all());
+        $jsonPayment = $request->all();
 
         $payment = collect(session('cart.payment'));
 
@@ -126,7 +127,7 @@ class CheckoutController extends Controller
 
         // dd(session('cart'));
 
-        return redirect('/checkout');
+        return redirect('/checkout/summary');
     }
 }
 

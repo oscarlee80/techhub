@@ -20,7 +20,8 @@
                     @foreach ($products as $product)
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
-                            <img class="img-responsive" src="{{asset('/storage/products/' . $product->photos)}}" alt="prewiew" width="120" height="80">
+                            {{-- @dd($product->defaultImage()) --}}
+                            {{-- <img class="img-responsive" src="{{asset('/storage/products/' . $product->defaultImage() )}}" alt="prewiew" width="120" height="80"> --}}
                         </div>
                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                             <h4 class="product-name"><strong>{{$product->title}}</strong></h4>
@@ -28,7 +29,7 @@
                         </div>
                         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                             <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                <h6><strong>$ {{number_format($product->price * $product->quantity) }} <span class="text-muted">x</span></strong></h6>
+                                <h6><strong>$ {{number_format($product->price) }} <span class="text-muted">x</span></strong></h6>
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
@@ -69,9 +70,6 @@
                         <a href="{{url('/cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
 
                         <div class="pull-right __cart_sum" style="margin: 5px">
-                            <p>
-                                Tax: <b>$ {{number_format(0)}}</b>;
-                            </p>
                             <p>
                                 Discounts: <b>$ {{number_format(0)}}</b>;
                             </p>
