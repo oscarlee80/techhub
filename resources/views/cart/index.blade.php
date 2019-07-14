@@ -15,13 +15,18 @@
     @else    
         <div class="container-fuid">
             <div class="card __shopping-cart">
+                <div class="__title">
+                    <h2>
+                        Carrito de Compras
+                    </h2>
+                </div>
+                <hr>
                 <div class="card-body">
                             <!-- PRODUCT -->
                     @foreach ($products as $product)
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
-                            {{-- @dd($product->defaultImage()) --}}
-                            {{-- <img class="img-responsive" src="{{asset('/storage/products/' . $product->defaultImage() )}}" alt="prewiew" width="120" height="80"> --}}
+                            <img class="img-responsive" src="{{asset('/storage/products/' . $product->dafaultPhoto)}}" alt="prewiew" width="120" height="80">
                         </div>
                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                             <h4 class="product-name"><strong>{{$product->title}}</strong></h4>

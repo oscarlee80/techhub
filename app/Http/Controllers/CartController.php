@@ -18,6 +18,8 @@ class CartController extends Controller
     {
         $products = collect(session('cart.products'));
 
+        $product->dafaultPhoto = $product->defaultImage();
+
         if ($request->quantity) {
             $product->quantity = $request->quantity;
         } else {
