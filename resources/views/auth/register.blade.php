@@ -28,7 +28,7 @@
 
                         <div class="nombre-apellido">
                             <div class="name">
-                                <input class="input_change @error('first_name') is-invalid @enderror" type="text" name="first_name" onblur="this.holaHola()" required value="{{ old('first_name') }}" autofocus >
+                                <input class="input_change @error('first_name') is-invalid @enderror" type="text" name="first_name" id="first_name" required value="{{ old('first_name') }}" autofocus >
                                 <label>Nombre</label>
 
                                 @error('first_name')
@@ -39,7 +39,7 @@
 
                             </div>
                             <div class="apellido">
-                                <input class="input_change @error('last_name') is-invalid @enderror" type="text" name="last_name" required value="{{ old('last_name') }}">
+                                <input class="input_change @error('last_name') is-invalid @enderror" type="text" name="last_name" id="last_name" required value="{{ old('last_name') }}">
                                 <label>Apellido</label>
                                 
                                 @error('last_name')
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="email">
-                            <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" onblur="empty(this)" required value="{{ old('email') }}">
+                            <input class="input_change @error('email') is-invalid @enderror" type="email" name="email" id="email" required value="{{ old('email') }}">
                             <label>Email</label>
 
                             @error('email')
@@ -62,7 +62,7 @@
 
                         </div>
                         <div class="pass">
-                            <input class="input_change @error('password') is-invalid @enderror" type="password" name="password" required value="">
+                            <input class="input_change @error('password') is-invalid @enderror" type="password" name="password" id="password"required value="">
                             <label>Contraseña</label>
 
                             @error('password')
@@ -73,7 +73,7 @@
 
                         </div>
                         <div class="pass_again">
-                            <input class="input_change" type="password" name="password_confirmation" required value="">
+                            <input class="input_change" type="password" name="password_confirmation" id="password_confirmation" required value="">
                             <label>Escribe tu contraseña de nuevo</label>
 
                         </div>

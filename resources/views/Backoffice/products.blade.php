@@ -44,7 +44,9 @@
                                 <form method="POST" action="/products/{{$product->id}}">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-outline-danger" value="" ><i class="far fa-trash-alt"></i></button>
+                                    <button type="submit" class="btn btn-outline-danger" value="" >
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
                                 </form>
                             </td>
                     </tr>
