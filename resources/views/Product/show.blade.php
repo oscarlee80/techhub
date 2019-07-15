@@ -19,10 +19,10 @@
             <label for="qty">Cantidad</label>
             <select name="quantity" style="width: 15%" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                 <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                @for($i = 2; $i <= 10; $i++){
+                    <option value="{{ $i }}">{{ $i }}</option>
+                }
+                @endfor
             </select>
             <br>
             <br>
