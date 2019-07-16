@@ -69,6 +69,18 @@ body{
 .cvv .input_change{
     width: 90px;
 }
+.zip_code .input_change_error{
+	width: 220px;
+}
+.address_number .input_change_error{
+    width: 70px;
+}
+.expired .input_change_error{
+	width: 180px;
+}
+.cvv .input_change_error{
+    width: 90px;
+}
 
 .input_change{
   width: 320px;;

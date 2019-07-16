@@ -13,7 +13,7 @@
                 </div>
             <div class="signup_section">
                 <div class="form_content">
-                    <form class="form_signup" action="{{ route('checkoutProduct') }}" method="POST">
+                    <form class="form_signup" id="payment-form" action="{{ route('checkoutProduct') }}" method="POST">
                         @csrf
 
                         <div class="cardholder_name">
@@ -28,7 +28,7 @@
 
                         </div>
                         <div class="card_number">
-                                <input class="input_change @error('card_number') is-invalid @enderror" type="text" name="card_number" required value="{{ old('card_number') }}" autofocus>
+                                <input class="input_change @error('card_number') is-invalid @enderror" type="text" name="card_number" id="card_number" required value="{{ old('card_number') }}" autofocus>
                                 <label>Número de Terjeta</label>
 
                                 @error('card_number')
@@ -40,7 +40,7 @@
                         </div>
                         <div class="nombre-apellido">
                             <div class="expired">
-                                <input class="input_change @error('expired') is-invalid @enderror" type="text" name="expired" required value="{{ old('expired') }}">
+                                <input class="input_change @error('expired') is-invalid @enderror" type="text" name="expired" id="expired_date" required value="{{ old('expired') }}">
                                 <label>Expired (MM-AAAA)</label>
                                 
                                 @error('expired')
@@ -51,7 +51,7 @@
 
                             </div>
                             <div class="cvv">
-                                <input class="input_change @error('cvv') is-invalid @enderror" type="number" name="cvv" required value="{{ old('cvv') }}">
+                                <input class="input_change @error('cvv') is-invalid @enderror" type="number" name="cvv" id="cvv" required value="{{ old('cvv') }}">
                                 <label>CVV</label>
                                 
                                 @error('cvv')
@@ -62,7 +62,7 @@
 
                             </div>
                         </div>
-                        <input class="submit_button" type="submit" name="" value="Continuar">
+                        <input class="submit_button" id="submit-register" type="submit" name="" value="Continuar">
                     </form>
                 </div>
             </div>

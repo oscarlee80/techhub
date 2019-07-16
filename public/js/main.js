@@ -1,6 +1,8 @@
-
 window.onload = function ()
 {
+//     let craa = /^([0-9]{2})-([0-9]{4})/;
+    // console.log(craa.test("09-9233"));
+    console.log('holis');
 
     // SHOW PRODUCT THUMBNAILS
 
@@ -75,8 +77,9 @@ window.onload = function ()
     productsHover()
 
     // LOGIN & REGISTER VALIDATION
-    
-    let sumnitButtonRegister = document.getElementById('submit-register');
+    // if (document.getElementById('submit-register')){
+        let sumnitButtonRegister = document.getElementById('submit-register');
+    // }
     
     let passHint = document.getElementById('__passHint');
     
@@ -99,187 +102,302 @@ window.onload = function ()
         }
     }
 
+    if (document.getElementById('first_name')){
 
-    let firstName_input = document.getElementById('first_name');
-    firstName_input.addEventListener('blur', function(){
-        empty(firstName_input);
-        
-        if(numbersRegex.test(firstName_input.value)){
-            firstName_input.className = "input_change_error";
-            sumnitButtonRegister.className = "submit_button_error"
-
-            errors = {
-                'first_name': 'Debe ingresar solo letras',
+        let firstName_input = document.getElementById('first_name');
+        firstName_input.addEventListener('blur', function(){
+            empty(firstName_input);
+            
+            if(numbersRegex.test(firstName_input.value)){
+                firstName_input.className = "input_change_error";
+                sumnitButtonRegister.className = "submit_button_error"
+    
+                errors = {
+                    'first_name': 'Debe ingresar solo letras',
+                }
             }
-        }
-    })
-
-
-    firstName_input.addEventListener('keyup', function(){
-        empty(firstName_input);
-
-        if (numbersRegex.test(firstName_input.value)) {
-            firstName_input.className = "input_change_error";
-            sumnitButtonRegister.className = "submit_button_error"
-
-            errors = {
-                'first_name': 'Debe ingresar solo letras',
+        })
+    
+    
+        firstName_input.addEventListener('keyup', function(){
+            empty(firstName_input);
+    
+            if (numbersRegex.test(firstName_input.value)) {
+                firstName_input.className = "input_change_error";
+                sumnitButtonRegister.className = "submit_button_error"
+    
+                errors = {
+                    'first_name': 'Debe ingresar solo letras',
+                }
             }
-        }
-
-    })
+    
+        })
+    }
 
 // --------------------
 
 // ----- LAST NAME INPUT -----
+    if (document.getElementById('last_name')){
 
-    let lastName_input = document.getElementById('last_name');
-    lastName_input.addEventListener('blur', function(){
-        empty(lastName_input);
-
-        if (numbersRegex.test(lastName_input.value)){
-            lastName_input.className = "input_change_error";
-            sumnitButtonRegister.className = "submit_button_error"
-        }
-    })
-
-    lastName_input.addEventListener('keyup', function(){
-        empty(lastName_input);
-        if (numbersRegex.test(lastName_input.value)){
-            lastName_input.className = "input_change_error";
-            sumnitButtonRegister.className = "submit_button_error"
-            errors = {
-                'last_name': 'Debe ingresar solo letras',
+        let lastName_input = document.getElementById('last_name');
+        lastName_input.addEventListener('blur', function(){
+            empty(lastName_input);
+    
+            if (numbersRegex.test(lastName_input.value)){
+                lastName_input.className = "input_change_error";
+                sumnitButtonRegister.className = "submit_button_error"
             }
-        }
-    })
+        })
+    
+        lastName_input.addEventListener('keyup', function(){
+            empty(lastName_input);
+            if (numbersRegex.test(lastName_input.value)){
+                lastName_input.className = "input_change_error";
+                sumnitButtonRegister.className = "submit_button_error"
+                errors = {
+                    'last_name': 'Debe ingresar solo letras',
+                }
+            }
+        })
+    }
 // --------------------
 
 // ----- EMAIL INPUT -----
+    if (document.getElementById('last_name')){
+
+        let email_input = document.getElementById('last_name');
+        email_input.addEventListener('blur', function(){
+            empty(email_input);
     
-    let email_input = document.getElementById('email');
-    email_input.addEventListener('blur', function(){
-        empty(email_input);
-
-        if(email_input.value){
-        let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        
-            if(!regex.test(email_input.value)){
-                email_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'email': 'Email invalido',
+            if(email_input.value){
+            let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            
+                if(!regex.test(email_input.value)){
+                    email_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'email': 'Email invalido',
+                    }
                 }
             }
-        }
-    })
-
-    email_input.addEventListener('keyup', function(){
-        empty(email_input);
-
-        if(email_input.value){
-        let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        
-            if(!regex.test(email_input.value)){
-                email_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'email': 'Email invalido',
+        })
+    
+        email_input.addEventListener('keyup', function(){
+            empty(email_input);
+    
+            if(email_input.value){
+            let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            
+                if(!regex.test(email_input.value)){
+                    email_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'email': 'Email invalido',
+                    }
                 }
             }
-        }
-    })
+        })
+    }
 // --------------------
 
 // ----- PASSWORD INPUT -----
+    if (document.getElementById('password')){
+        
+        let password_input = document.getElementById('password');
+        password_input.style.marginBottom = "50px";
+        password_input.addEventListener('blur', function(){
+            empty(password_input);
     
-    let password_input = document.getElementById('password');
-    password_input.style.marginBottom = "50px";
-    password_input.addEventListener('blur', function(){
-        empty(password_input);
-
-        if(password_input.value){
-            let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
-            if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
-                password_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'password': 'Contraseña debil',
+            if(password_input.value){
+                let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
+                if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
+                    password_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'password': 'Contraseña debil',
+                    }
                 }
             }
-        }
-    })
-
-    password_input.addEventListener('keyup', function(){
-        empty(password_input);
-
-        if(password_input.value){
-            let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
-
-            if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
-                password_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'password': 'Contraseña debil',
+        })
+    
+        password_input.addEventListener('keyup', function(){
+            empty(password_input);
+    
+            if(password_input.value){
+                let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
+    
+                if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
+                    password_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'password': 'Contraseña debil',
+                    }
                 }
             }
-        }
-    })
+        })
+    }
 // --------------------
 
 // ----- PASSWORD CONFIRM INPUT -----
-    let passwordConfirm_input = document.getElementById('password_confirmation');
-    passwordConfirm_input.addEventListener('blur', function(){
-        empty(passwordConfirm_input);
+    if (document.getElementById('password_confirmation')){
 
-        if(passwordConfirm_input.value){
-            if(passwordConfirm_input.value != password_input.value){
-                passwordConfirm_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'password_confirm': 'Contraseñas no coinciden',
+        let passwordConfirm_input = document.getElementById('password_confirmation');
+        passwordConfirm_input.addEventListener('blur', function(){
+            empty(passwordConfirm_input);
+    
+            if(passwordConfirm_input.value){
+                if(passwordConfirm_input.value != password_input.value){
+                    passwordConfirm_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'password_confirm': 'Contraseñas no coinciden',
+                    }
                 }
             }
-        }
-    })
-
-    passwordConfirm_input.addEventListener('keyup', function(){
-        empty(passwordConfirm_input);
-
-        if(passwordConfirm_input.value){
-            if(passwordConfirm_input.value != password_input.value){
-                passwordConfirm_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-                errors = {
-                    'password_confirm': 'Contraseñas no coinciden',
+        })
+    
+        passwordConfirm_input.addEventListener('keyup', function(){
+            empty(passwordConfirm_input);
+    
+            if(passwordConfirm_input.value){
+                if(passwordConfirm_input.value != password_input.value){
+                    passwordConfirm_input.className = "input_change_error"
+                    sumnitButtonRegister.className = "submit_button_error"
+                    errors = {
+                        'password_confirm': 'Contraseñas no coinciden',
+                    }
                 }
             }
-        }
-        
-    })
+            
+        })
+    }
+// --------------------
+// ----- CARD NUMBER INPUT -----
+    if (document.getElementById('card_number')){
+
+        let cardNumber_input = document.getElementById('card_number');
+        cardNumber_input.addEventListener('blud', function(){
+            empty(cardNumber_input);
+
+            if (cardNumber_input.value.length != 16 || !numbersRegex.test(cardNumber_input.value)){
+                cardNumber_input.className = "input_change_error"
+            }
+        })
+
+        cardNumber_input.addEventListener('keyup', function () {
+            empty(cardNumber_input);
+
+            if (cardNumber_input.value.length != 16 || !numbersRegex.test(cardNumber_input.value)) {
+                cardNumber_input.className = "input_change_error"
+            }
+        })
+    }
+
+// --------------------
+
+// ----- CARD EXPIRED DATE INPUT -----
+
+    if (document.querySelector('#expired_date')){
+
+        let expiredDate_input = document.querySelector('#expired_date');
+        expiredDate_input.addEventListener('blur', function(){
+            empty(expiredDate_input);
+    
+            let expiredFormat = /^([0-9]{2})-([0-9]{4})/;
+    
+            if (expiredDate_input.value.length > 7 || !expiredFormat.test(expiredDate_input.value)){
+                expiredDate_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
+            }
+    
+        })
+
+        expiredDate_input.addEventListener('keyup', function () {
+            empty(expiredDate_input);
+
+            let expiredFormat = /^([0-9]{2})-([0-9]{4}?)/;
+
+            if (expiredDate_input.value.length > 7 || !expiredFormat.test(expiredDate_input.value)) {
+                expiredDate_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
+            }
+
+        })
+    }
+// --------------------
+
+// ----- CARD CVV INPUT -----
+
+    if(document.getElementById('cvv')){
+
+        let cvvCard_input = document.getElementById('cvv');
+        cvvCard_input.addEventListener('blur', function () {
+            empty(cvvCard_input);
+
+            if (!(cvvCard_input.value.length > 2 && cvvCard_input.value.length < 5) || !numbersRegex.test(cvvCard_input.value)) {
+                cvvCard_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
+            }
+
+        })
+
+        cvvCard_input.addEventListener('keyup', function () {
+            empty(cvvCard_input);
+
+            if (!(cvvCard_input.value.length > 2 && cvvCard_input.value.length < 5) || !numbersRegex.test(cvvCard_input.value)) {
+                cvvCard_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
+            }
+
+        })
+    }
+
 // --------------------
 
 // ENVIO DE FORMULARIO
+    if (document.getElementById('register-form')){
 
-    let register_form = document.getElementById('register-form')
+        let register_form = document.getElementById('register-form');
 
-    register_form.addEventListener('submit', sendRegistrationForm);
-
-    function sendRegistrationForm(e) {
-        e.preventDefault()
-        error_class = document.getElementsByClassName("input_change_error");
-        if (error_class.length == 0) {
-            register_form.submit();
+        register_form.addEventListener('submit', sendRegistrationForm);
+        function sendRegistrationForm(e) {
+            e.preventDefault()
+            error_class = document.getElementsByClassName("input_change_error");
+            if (error_class.length == 0) {
+                register_form.submit();
+            }
+            alert('Porfavor, verifique los datos ingresados.');
         }
     }
+
+    if (document.getElementById('payment-form')) {
+
+        let payment_form = document.getElementById('payment-form');
+
+        payment_form.addEventListener('submit', sendPaymentForm);
+        function sendPaymentForm(e) {
+            e.preventDefault()
+            error_class = document.getElementsByClassName("input_change_error");
+            if (error_class.length == 0) {
+                payment_form.submit();
+            }
+            alert('Porfavor, verifique los datos ingresados.');
+        }
+    }
+
+
+    
+
  // --------------------
 
 //    SHOW FILE NAME INSIDE INPUT FILE
-
-    let input_file = document.getElementById('file');
-    let file_name = document.getElementById('fileUpload_name');
-
-    input_file.addEventListener( 'change', showFileName );
+    if (document.getElementById('file') && document.getElementById('fileUpload_name')){
+        
+        let input_file = document.getElementById('file');
+        let file_name = document.getElementById('fileUpload_name');
+    
+        input_file.addEventListener( 'change', showFileName );
+    }
 
     function showFileName( event ) {
 
