@@ -39,31 +39,27 @@ window.onload = function ()
     productsHover()
 
     // LOGIN & REGISTER VALIDATION
+    
+    let sumnitButtonRegister = document.getElementById('submit-register');
+    
+    let passHint = document.getElementById('__passHint');
+    
+    let numbersRegex = /[0-9]/;
+    
+    let errors = {};
 
 // ----- FIRST NAME INPUT -----
 
-    function validateFirstName(txt) {
-
-    }
-
-    function addErrorClass(el, cn = '') {
-        el.className.classList.toggle(cn)
-    }
-
-    let numbersRegex = /[0-9]/;
-
-    let errors = {};
-
-    // console.log(errors);
-
     function empty(element){
         if (element.value == ''){
-            element.className = "input_change_error"
+            element.className = "input_change_error";
+            sumnitButtonRegister.className = "submit_button_error"
             errors = {
                 'empty': 'Campo Obligatorio',
             }
         }else{
-            element.className = "input_change"
+            element.className = "input_change";
+            sumnitButtonRegister.className = "submit_button"
         }
     }
 
@@ -73,7 +69,8 @@ window.onload = function ()
         empty(firstName_input);
         
         if(numbersRegex.test(firstName_input.value)){
-            firstName_input.className = "input_change_error"
+            firstName_input.className = "input_change_error";
+            sumnitButtonRegister.className = "submit_button_error"
 
             errors = {
                 'first_name': 'Debe ingresar solo letras',
@@ -86,7 +83,8 @@ window.onload = function ()
         empty(firstName_input);
 
         if (numbersRegex.test(firstName_input.value)) {
-            firstName_input.className = "input_change_error"
+            firstName_input.className = "input_change_error";
+            sumnitButtonRegister.className = "submit_button_error"
 
             errors = {
                 'first_name': 'Debe ingresar solo letras',
@@ -104,14 +102,16 @@ window.onload = function ()
         empty(lastName_input);
 
         if (numbersRegex.test(lastName_input.value)){
-            lastName_input.className = "input_change_error"
+            lastName_input.className = "input_change_error";
+            sumnitButtonRegister.className = "submit_button_error"
         }
     })
 
     lastName_input.addEventListener('keyup', function(){
         empty(lastName_input);
         if (numbersRegex.test(lastName_input.value)){
-            lastName_input.className = "input_change_error"
+            lastName_input.className = "input_change_error";
+            sumnitButtonRegister.className = "submit_button_error"
             errors = {
                 'last_name': 'Debe ingresar solo letras',
             }
@@ -130,6 +130,7 @@ window.onload = function ()
         
             if(!regex.test(email_input.value)){
                 email_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'email': 'Email invalido',
                 }
@@ -145,6 +146,7 @@ window.onload = function ()
         
             if(!regex.test(email_input.value)){
                 email_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'email': 'Email invalido',
                 }
@@ -156,6 +158,7 @@ window.onload = function ()
 // ----- PASSWORD INPUT -----
     
     let password_input = document.getElementById('password');
+    password_input.style.marginBottom = "50px";
     password_input.addEventListener('blur', function(){
         empty(password_input);
 
@@ -163,6 +166,7 @@ window.onload = function ()
             let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
             if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
                 password_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'password': 'Contraseña debil',
                 }
@@ -178,6 +182,7 @@ window.onload = function ()
 
             if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
                 password_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'password': 'Contraseña debil',
                 }
@@ -194,6 +199,7 @@ window.onload = function ()
         if(passwordConfirm_input.value){
             if(passwordConfirm_input.value != password_input.value){
                 passwordConfirm_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'password_confirm': 'Contraseñas no coinciden',
                 }
@@ -207,6 +213,7 @@ window.onload = function ()
         if(passwordConfirm_input.value){
             if(passwordConfirm_input.value != password_input.value){
                 passwordConfirm_input.className = "input_change_error"
+                sumnitButtonRegister.className = "submit_button_error"
                 errors = {
                     'password_confirm': 'Contraseñas no coinciden',
                 }
@@ -217,7 +224,6 @@ window.onload = function ()
 // --------------------
 
 // ENVIO DE FORMULARIO
-
 
     let register_form = document.getElementById('register-form')
 

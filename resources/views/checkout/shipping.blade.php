@@ -16,19 +16,9 @@
                     <form class="form_signup" action="{{ route('checkoutShipping') }}" method="POST">
                             @csrf
                         <div class="country row">    
-                            {{-- <select name="" id="">
-                                <option value="" selected disabled>Pais</option>
-                                @foreach($allCountries as $country)
-                                    @if($country['admin'])
-                                        <option value="{{$country['admin']}}">
-                                            {{$country['adm0_a3'] . ' - ' . $country['admin']}}
-                                        </option>
-                                    @endif
-                                @endforeach
-                            </select> --}}
                             <div class=""select>
-                                <select name="country">
-                                    <option value="" selected disabled>Pais</option>
+                                <select class="__select_country" name="country">
+                                    <option class="selected" value="" selected disabled>Pais</option>
                                     @foreach($allCountries as $country)
                                         @if($country['admin'])
                                             <option value="{{$country['admin']}}">

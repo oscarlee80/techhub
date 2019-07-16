@@ -66,7 +66,7 @@
                             <label>Contraseña</label>
 
                             @if(!$errors->has('password'))
-                             <span class="__passHint">Debe contener al menos 8 caracteres, una mayuscula, minuscula y número.</span>
+                             <span class="__passHint" id="__passHint" >Debe contener al menos 8 caracteres, una mayuscula, minuscula y número.</span>
                             @endif
 
                             @error('password')
@@ -81,7 +81,7 @@
                             <label>Escribe tu contraseña de nuevo</label>
 
                         </div>
-                        <input class="submit_button" type="submit" name="" value="Regístrate">
+                        <input class="submit_button" type="submit" name="" id="submit-register" value="Regístrate">
                     </form>
                 </div>
                 <div class="divider">

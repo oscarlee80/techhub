@@ -12,3 +12,4 @@
     crossorigin="anonymous">
 </script>
 <script src="{{ asset('js/product.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}" defer></script>

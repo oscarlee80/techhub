@@ -181,6 +181,18 @@ form select{
     border: 1px solid #ced4da !important;
 }
 
+.__select_country{
+    flex: 1;
+    padding: 0 .5em;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px solid #ced4da !important;
+    margin-bottom: 20px;
+    width: 320px;
+}
+
+
 
 .file {
   position: relative;
@@ -291,12 +303,6 @@ select {
 }
 
 
-
-
-
-
-
-
 .submit_button{
     border-bottom: none;
     border: 1px solid rgb(52, 180, 131);
@@ -314,6 +320,25 @@ select {
   color: #fff;
   transition: .3s;
 }
+
+.submit_button_error{
+    border-bottom: none;
+    border: 1px solid rgb(247, 42, 27);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 30px;
+    color: rgb(247, 42, 27);
+    font-weight: 500;
+    width: 320px;
+    background-color: #ffffff;
+    text-align: center;
+}
+.submit_button_error:hover{
+  background-color: rgb(247, 42, 27);
+  color: #fff;
+  transition: .3s;
+}
+
 .divider{
   width: 1px;
   background-color: rgb(167, 167, 167);
