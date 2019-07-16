@@ -32,10 +32,25 @@ window.onload = function ()
     for (var i = 0; i < destroyForm.length; i++) {
         destroyForm[i].addEventListener('submit', function (event) {
             event.preventDefault();
-            let choice = confirm("Se va a eliminar el registro. Está seguro?");
-            if (choice) {
-                this.submit();
-            }
+            Swal.fire({
+                title: 'Esta seguro?',
+                text: "Los datos borrados no se podran recuperar",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borrar datos!'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                        'Datos borrados!',
+                        'Datos borrados correctamente',
+                        'success'
+                    )
+                    this.submit();
+                }
+            });
+
         });
     }
     
@@ -366,7 +381,11 @@ window.onload = function ()
             if (error_class.length == 0) {
                 register_form.submit();
             }
-            alert('Porfavor, verifique los datos ingresados.');
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Porfavor, verifique los datos ingresados.'
+            })
         }
     }
 
@@ -381,7 +400,11 @@ window.onload = function ()
             if (error_class.length == 0) {
                 payment_form.submit();
             }
-            alert('Porfavor, verifique los datos ingresados.');
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Porfavor, verifique los datos ingresados.'
+            })
         }
     }
 

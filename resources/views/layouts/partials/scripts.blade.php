@@ -12,4 +12,6 @@
     crossorigin="anonymous">
 </script>
 {{-- <script src="{{ asset('js/master.js') }}" defer></script> --}}
+<script src="sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
