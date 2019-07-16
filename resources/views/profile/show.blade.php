@@ -10,7 +10,8 @@
     <div class="_main_container">
         <div class="_profile_info">
           <div class="_photo" style="background-image: url({{asset('storage/avatars/' . $user->avatar)}})">
-                <!-- <img class="" src="" alt=""> -->
+                {{-- <img class="" src="" alt=""> --}}
+                {{-- HOLA SOY EL DIV DE LA IMAGEN, NO ME BORRES :) --}}
             </div>
             <div class="_info">
                 <div class="_user_info">
