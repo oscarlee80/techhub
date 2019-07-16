@@ -8,6 +8,15 @@
 <br>
 <img class="__productImage" src="/storage/products/{{ $product->defaultImage() }}" alt="imagen">
 <br>
+@if (count($product->photos()) > 1)
+    <div class="d-flex container __thumbcontainer">
+        @for ($i = 0; $i < count($product->photos()); $i++)
+        <a href="#">
+        <img class="__thumbnails" src="/storage/products/{{ $product->photos()[$i] }}" alt="imagen">
+        </a>
+        @endfor
+    </div>
+@endif
 <div class="card text-center m-auto __productDetails">
     <div class="card-body">
         <h3 class="card-title">{{ $product->title }}</h3>

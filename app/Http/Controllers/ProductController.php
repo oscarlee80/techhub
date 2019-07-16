@@ -113,7 +113,7 @@ class ProductController extends Controller
     $product->trending = $request->input('trending') !== $product->trending ? $request->input('trending') : $product->trending;
 
     if ($request->file('photos') !== null) {
-        if ($product->photos !==null ) {
+        if ($product->photos() !== null ) {
             foreach ($product->photos() as $photo) {
                 unlink("storage/products/".$photo);
             }
