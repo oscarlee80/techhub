@@ -19,7 +19,7 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-
+        
         if($request->first_name){
 
             $rules = [
@@ -56,6 +56,27 @@ class ProfileController extends Controller
             DB::table('users')
                 ->where('id', auth()->user()->id)
                 ->update(['last_name' => $last_name]);
+        }
+
+        if ($request->email) {
+
+            // dd($request->all());
+            $email = $request->email;
+
+            $rules = [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+            ];
+
+            $message = [
+                'email.email' => 'Email invalido',
+                'email.unique' => 'Este correo ya se encuentra registrado',
+            ];
+
+            $this->validate($request, $rules, $message);
+
+            DB::table('users')
+                ->where('id', auth()->user()->id)
+                ->update(['email' => $email]);
         }
 
         if ($request->avatar) {

@@ -71,7 +71,9 @@
                     </div>
                     <p>
                         Email: {{$user->email}}
-                        <a href="#popupEmail"><i class="far fa-edit"></i></a>
+                        @if(!$user->provider)
+                            <a href="#popupEmail"><i class="far fa-edit"></i></a>
+                        @endif
                     </p>
                     <div id="popupEmail" class="overlay">
                         <div id="popupBody">
@@ -81,7 +83,14 @@
                                 <form class="__profile_form" action="" method="POST">
                                     {{ method_field('PATCH') }}
                                     @csrf
-                                    <input class="input_change" type="text" name="" required value="WOHOHO Despacio Cerebrito!">
+                                    <input class="input_change" type="text" name="email" required value="">
+                                    <div class="_errors">
+                                        @error('email')
+                                        <span class="errores" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
                                     <br>
                                     <input class="submit_button" type="submit" name="" value="Cambiar">
                                 </form>

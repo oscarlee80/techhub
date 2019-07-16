@@ -48,7 +48,8 @@
 
             <input name="last_name" value="{{ $user->last_name }}" type="text" class="form-control"  style="width : 330px;">
         </div>
-        <div class="form-group">
+        @if(!$user->provider)
+            <div class="form-group">
                 <label for="email">E-Mail</label>
     
                 @error('email')
@@ -60,6 +61,7 @@
     
                 <input name="email" value="{{ $user->email }}" type="text" class="form-control"  style="width : 330px;">
             </div>
+        @endif
         <div class="form-group">
             <label for="role">Rol</label>
 

@@ -122,6 +122,7 @@ class RegisterController extends Controller
                 'email' => $user->email,
                 'provider' => strtoupper($provider),
                 'provider_id' => $user->id,
+                'avatar' => 'default.jpeg'
             ]);
         }
         // dd($user->id);
@@ -131,6 +132,7 @@ class RegisterController extends Controller
             'email' => $user->email,
             'provider' => strtoupper($provider),
             'provider_id' => $user->id,
+            'avatar' => 'default.jpeg'
         ]);
     }
 }
