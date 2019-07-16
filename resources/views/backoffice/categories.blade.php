@@ -41,7 +41,7 @@
                             <a href="/categories/{{ $category->id }}/edit" type="" class="btn btn-outline-primary" value="" ><i class="far fa-edit"></i></a>
                         </td>
                         <td>
-                            <form method="POST" action="/categories/{{$category->id}}">
+                            <form id="destroyForm" method="POST" action="/categories/{{$category->id}}">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-outline-danger" value="" ><i class="far fa-trash-alt"></i></button>

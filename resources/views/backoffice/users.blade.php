@@ -52,7 +52,7 @@
                                     <a href="/backoffice/users/{{ $user->id }}/edit" type="" class="btn btn-outline-primary" value="" ><i class="far fa-edit"></i></a>
                             </td>
                             <td>
-                                <form method="POST" action="/backoffice/users/{{$user->id}}">
+                                <form id="destroyForm" method="POST" action="/backoffice/users/{{$user->id}}">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger" value="" ><i class="far fa-trash-alt"></i></button>

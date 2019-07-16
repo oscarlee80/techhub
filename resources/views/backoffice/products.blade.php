@@ -41,10 +41,10 @@
                                 <a href="/products/{{ $product->id }}/edit" type="" class="btn btn-outline-primary" value="" ><i class="far fa-edit"></i></a>
                             </td>
                             <td>
-                                <form method="POST" action="/products/{{$product->id}}">
+                                <form id="destroyForm" method="POST" action="/products/{{$product->id}}">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-outline-danger" value="" >
+                                    <button id="destroyConfirm" type="submit" class="btn btn-outline-danger" value="" >
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                 </form>
