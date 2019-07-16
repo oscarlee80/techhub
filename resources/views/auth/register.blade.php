@@ -23,7 +23,7 @@
             </div>
             <div class="signup_section">
                 <div class="form_content">
-                    <form class="form_signup" action="{{ route('register') }}" method="POST">
+                    <form class="form_signup" id="register-form" action="{{ route('register') }}" method="POST">
                         @csrf
 
                         <div class="nombre-apellido">
