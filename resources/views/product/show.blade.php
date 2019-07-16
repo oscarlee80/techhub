@@ -11,7 +11,7 @@
 @if (count($product->photos()) > 1)
     <div class="d-flex container __thumbcontainer">
         @for ($i = 0; $i < count($product->photos()); $i++)
-        <a href="#">
+        <a href="{{'#'.$i}}">
         <img class="__thumbnails" src="/storage/products/{{ $product->photos()[$i] }}" alt="imagen">
         </a>
         @endfor
