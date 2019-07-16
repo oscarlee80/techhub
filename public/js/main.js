@@ -50,33 +50,51 @@ window.onload = function ()
         el.className.classList.toggle(cn)
     }
 
+    let numbersRegex = /[0-9]/;
+
+    let errors = {};
+
+    // console.log(errors);
+
     function empty(element){
         if (element.value == ''){
             element.className = "input_change_error"
-            console.log('error');
+            errors = {
+                'empty': 'Campo Obligatorio',
+            }
         }else{
             element.className = "input_change"
         }
     }
 
+
     let firstName_input = document.getElementById('first_name');
     firstName_input.addEventListener('blur', function(){
         empty(firstName_input);
         
-        if(!isNaN(firstName_input.value)){
+        if(numbersRegex.test(firstName_input.value)){
             firstName_input.className = "input_change_error"
+
+            errors = {
+                'first_name': 'Debe ingresar solo letras',
+            }
         }
     })
 
 
     firstName_input.addEventListener('keyup', function(){
         empty(firstName_input);
-    })
-        firstName_input.addEventListener('keyup', function(){
-        if(!isNaN(firstName_input.value)){
+
+        if (numbersRegex.test(firstName_input.value)) {
             firstName_input.className = "input_change_error"
+
+            errors = {
+                'first_name': 'Debe ingresar solo letras',
+            }
         }
+
     })
+
 // --------------------
 
 // ----- LAST NAME INPUT -----
@@ -85,18 +103,20 @@ window.onload = function ()
     lastName_input.addEventListener('blur', function(){
         empty(lastName_input);
 
-        if(!isNaN(lastName_input.value)){
+        if (numbersRegex.test(lastName_input.value)){
             lastName_input.className = "input_change_error"
         }
     })
 
     lastName_input.addEventListener('keyup', function(){
         empty(lastName_input);
-        if(!isNaN(lastName_input.value)){
+        if (numbersRegex.test(lastName_input.value)){
             lastName_input.className = "input_change_error"
+            errors = {
+                'last_name': 'Debe ingresar solo letras',
+            }
         }
     })
-
 // --------------------
 
 // ----- EMAIL INPUT -----
@@ -110,6 +130,9 @@ window.onload = function ()
         
             if(!regex.test(email_input.value)){
                 email_input.className = "input_change_error"
+                errors = {
+                    'email': 'Email invalido',
+                }
             }
         }
     })
@@ -122,6 +145,9 @@ window.onload = function ()
         
             if(!regex.test(email_input.value)){
                 email_input.className = "input_change_error"
+                errors = {
+                    'email': 'Email invalido',
+                }
             }
         }
     })
@@ -137,6 +163,9 @@ window.onload = function ()
             let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
             if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
                 password_input.className = "input_change_error"
+                errors = {
+                    'password': 'Contraseña debil',
+                }
             }
         }
     })
@@ -146,11 +175,12 @@ window.onload = function ()
 
         if(password_input.value){
             let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
-            console.log(!passRegex.test(password_input.value));
 
             if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
-                console.log('entreeeeee');
                 password_input.className = "input_change_error"
+                errors = {
+                    'password': 'Contraseña debil',
+                }
             }
         }
     })
@@ -164,6 +194,9 @@ window.onload = function ()
         if(passwordConfirm_input.value){
             if(passwordConfirm_input.value != password_input.value){
                 passwordConfirm_input.className = "input_change_error"
+                errors = {
+                    'password_confirm': 'Contraseñas no coinciden',
+                }
             }
         }
     })
@@ -174,12 +207,30 @@ window.onload = function ()
         if(passwordConfirm_input.value){
             if(passwordConfirm_input.value != password_input.value){
                 passwordConfirm_input.className = "input_change_error"
+                errors = {
+                    'password_confirm': 'Contraseñas no coinciden',
+                }
             }
         }
+        
     })
 // --------------------
 
-   
+// ENVIO DE FORMULARIO
+
+
+    let register_form = document.getElementById('register-form')
+
+    register_form.addEventListener('submit', sendRegistrationForm);
+
+    function sendRegistrationForm(e) {
+        e.preventDefault()
+        error_class = document.getElementsByClassName("input_change_error");
+        if (error_class.length == 0) {
+            register_form.submit();
+        }
+    }
+ // --------------------
 
 //    SHOW FILE NAME INSIDE INPUT FILE
 
@@ -195,14 +246,5 @@ window.onload = function ()
         file_name.innerHTML = fileName
     }
 
-    function sendRegistrationForm(e) {
-        e.preventDefault()
-
-        // 
-    }
-
-    let form = document.getElementById('register-form')
-
-    form.addEventListener('submit', sendRegistrationForm)
     
 }  

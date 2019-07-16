@@ -65,6 +65,10 @@
                             <input class="input_change @error('password') is-invalid @enderror" type="password" name="password" id="password"required value="">
                             <label>Contraseña</label>
 
+                            @if(!$errors->has('password'))
+                             <span class="__passHint">Debe contener al menos 8 caracteres, una mayuscula, minuscula y número.</span>
+                            @endif
+
                             @error('password')
                                 <span class="errores" role="alert">
                                     <strong>{{ $message }}</strong>

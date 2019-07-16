@@ -20,6 +20,14 @@ a{
      font-size: 10px;
 }
 
+.__passHint{
+     color: rgb(160, 160, 160);
+     position: absolute;
+     z-index: 998;
+     top: 36px;
+     font-size: 10px;
+}
+
 
 /* register */
 
