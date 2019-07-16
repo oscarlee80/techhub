@@ -12,8 +12,13 @@
 @if (count($product->photos()) > 1)
     <div class="container __thumbcontainer row">
         @for ($i = 0; $i < count($product->photos()); $i++)
+<<<<<<< HEAD
         <a href="#">
         <img class="__thumbnails col-12" src="/storage/products/{{ $product->photos()[$i] }}" alt="imagen">
+=======
+        <a href="{{'#'.$i}}">
+        <img class="__thumbnails" src="/storage/products/{{ $product->photos()[$i] }}" alt="imagen">
+>>>>>>> a4b94c040378cf836517f48aa07f3343faa8da2a
         </a>
         @endfor
     </div>

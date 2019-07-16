@@ -86,6 +86,7 @@ class LoginController extends Controller
                 'email' => $user->email,
                 'provider' => strtoupper($provider),
                 'provider_id' => $user->id,
+                'avatar' => 'default.jpeg'
             ]);
         }
 
@@ -96,6 +97,7 @@ class LoginController extends Controller
             'email' => $user->email,
             'provider' => strtoupper($provider),
             'provider_id' => $user->id,
+            'avatar' => 'default.jpeg'
         ]);
     }
 
