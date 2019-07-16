@@ -256,6 +256,7 @@ a:hover{
 .__thumbcontainer{
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 .__thumbnails {
   width: 100px;
