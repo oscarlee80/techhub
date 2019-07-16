@@ -17,8 +17,7 @@ window.onload = function ()
         }
             thumbnail[index].style.border = "medium solid  rgb(52, 157, 118)";
             thumbnail[index].style.boxShadow = "0 0 40px -8px rgb(52, 157, 118)";
-        });
-        
+        });   
     }
 
     // CRUD DELETE CONFIRM

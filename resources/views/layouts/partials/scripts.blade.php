@@ -11,9 +11,5 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous">
 </script>
-<<<<<<< HEAD
-<script src="{{ asset('js/product.js') }}" defer></script>
+{{-- <script src="{{ asset('js/master.js') }}" defer></script> --}}
 <script src="{{ asset('js/main.js') }}" defer></script>
-=======
-<script src="{{ asset('js/master.js') }}" defer></script>
->>>>>>> 1576da4e294e28dca2dab74a3175bffdad95c7cc
