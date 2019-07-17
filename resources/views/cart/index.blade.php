@@ -69,7 +69,7 @@
                                     <input type="text" class="form-control __coupon_numbre" name="discount_name" placeholder="cupone code">
                                 </div>
                                 <div class="col-6">
-                                    <input type="submit" class="btn btn-default" value="Use cupone">
+                                    <input type="submit" class="btn btn-default" value="Usar Cupón">
                                 </div>
                             </form>
                         </div>

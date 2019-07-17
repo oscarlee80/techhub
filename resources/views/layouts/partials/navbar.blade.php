@@ -29,7 +29,7 @@
 
                 @if (isset(Auth::user()->first_name))
                     <li class="nav-item o_navlinks">
-                        <a class="nav-link o_links" href="{{url('profile/'. auth()->user()->id)}}"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
+                        <a class="nav-link o_links" href="{{url('profile/'. auth()->user()->id)}}"><i class='far fa-user'></i>{{' ' .  Auth::user()->first_name }}</a>
                     </li>
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{ route('logout') }}"
@@ -69,8 +69,8 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 justify-content-end _search_box" action="/results">
-                <input name="keywords" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input name="keywords" class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
     </nav>

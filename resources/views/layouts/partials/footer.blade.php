@@ -20,13 +20,18 @@
         </article>
         <article class="sucursales col-12 col-md-4 __artpie">
             <h4>Mi cuenta</h4>
-            <a href="login.php"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+            @if (isset(Auth::user()->first_name))
+            <a href="{{url('profile/'. auth()->user()->id)}}"><i class="fas fa-sign-in-alt"></i>{{' ' .  Auth::user()->first_name }}</a>
             <br>
-            <a href="register.php"><i class="fas fa-pen"></i> Registracion</a>
+            @else
+            <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
             <br>
-            <a href="faq.php"><i class="far fa-question-circle"></i> FAQ</a>
+            <a href="{{ route('register') }}"><i class="fas fa-pen"></i> Registracion</a>
             <br>
-            <a href="#"><i class="fas fa-shopping-cart"></i> Mi Carrito</a>
+            @endif
+            <a href="{{ url('/faq') }}"><i class="far fa-question-circle"></i> FAQ</a>
+            <br>
+            <a href="{{url('/cart')}}"><i class="fas fa-shopping-cart"></i> Mi Carrito</a>
 
         </article>
     </footer>

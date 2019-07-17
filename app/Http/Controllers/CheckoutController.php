@@ -48,8 +48,14 @@ class CheckoutController extends Controller
     {
         $products = session('cart.products');
 
-        
-        $totalPrice = $products->sum('subtotal');
+        if (session('cart.discounts')) {
+            $totalPrice = $products->sum('subtotal') * session('cart.discounts')->price;
+            // dd($totalPrice);
+        } else {
+            $totalPrice = $products->sum('subtotal');
+        }
+
+        // $totalPrice = $products->sum('subtotal');
         
         $shipping = session('cart.shipping');
         

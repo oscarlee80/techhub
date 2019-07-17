@@ -29,7 +29,7 @@
                         </div>
                         <div class="card_number">
                                 <input class="input_change @error('card_number') is-invalid @enderror" type="text" name="card_number" id="card_number" required value="{{ old('card_number') }}">
-                                <label>Número de Terjeta</label>
+                                <label>Número de Tarjeta</label>
 
                                 @error('card_number')
                                     <span class="errores" role="alert">
