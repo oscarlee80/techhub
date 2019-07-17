@@ -1,35 +1,31 @@
-@extends ('layouts/main')
+@extends ('layouts.master')
 
 @section ('title')
 {{ $category->name }}
 @endsection
 
 @section ('content')
-<br>
-<br>
-<br>
-<br>
-<header class="container_header">
-        <a href="/">
-            <img class="img_logo" src="{{asset('/img/logo_techhub_5.png')}}" alt="logo">
-        </a>
-</header>
-<div class="__ofertas row container-fluid">
+<div class="container-fluid">
     <div class="col-12 text-center __productos_destacados">
         <p>
             {{ $category->name }}
         </p>
     </div>
     @if (isset($category->products))
-    @foreach ($category->products as $product)        
-        <div class="card col-6 col-md-3 col-lg-2 __itemoferta" style="width: 18rem;">
-            <img src="/storage/products/{{ $product->photos }}" class="card-img-top __imgofertas" alt="...">
-            <div class="card-body">
-                <p class="card-text o_tituloitems">{{ $product->title }}</p>
-                <a href="#" class="d-flex btn btn-primary __comprar">${{ $product->price}}</a>
+    <div class="__cards_wrapper row">
+    @foreach ($category->products as $product)
+        <div class="__cards col-12 col-md-3 col-lg-2">
+            <div class="__img_card">
+                <img src="{{asset('/storage/products/' . $product->defaultImage()) }}" alt="">
             </div>
+            <a href="{{ url("products/".$product->id) }}">
+            <h2 class="o_tituloitems">{{ $product->title }}</h2>
+            </a>
+            <p class="__textoofertas">{{$product->description}}</p>
+            <a href="{{url('cart/add/' . $product->id)}}" class="d-flex btn btn-primary __comprar">{{$product->price}}</a>
         </div>
     @endforeach
+    </div>
     @endif
 </div>
 @endsection

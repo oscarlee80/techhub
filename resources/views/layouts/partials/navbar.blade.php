@@ -1,6 +1,5 @@
 <div class="container-fluid">
 <header>
-    {{-- @dd(session('cart.products')) --}}
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="/">
             <img class="__imglogo" src={{asset("img/logo_techhub_6.png")}} alt="logo">
@@ -10,7 +9,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto o_navitems">
-                
+
+                <li class="nav-item o_navlinks">
+                    <a class="nav-link o_links" href="{{ url('/categories') }}">
+                        Categorias
+                    </a>
+                </li>
+
+                {{-- <li class="nav-item o_links dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </li> --}}
+
                 @if (isset(Auth::user()->first_name))
                     <li class="nav-item o_navlinks">
                         <a class="nav-link o_links" href="{{url('profile/'. auth()->user()->id)}}"><?php echo "<i class='far fa-user'></i>   " . Auth::user()->first_name; ?></a>
@@ -27,7 +43,9 @@
                     </li>
                 @if (auth()->user()->role == 6 || auth()->user()->role == 9)
                     <li class="nav-item o_navlinks">
+                        
                         <a class="nav-link o_links" href="{{ route ('backoffice') }}">
+                            <i class="fas fa-database"></i>
                             BackOffice
                         </a>
                     </li>

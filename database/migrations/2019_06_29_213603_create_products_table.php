@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->decimal('price', 8, 2);
             $table->longText('photos')->nullable();
             $table->tinyInteger('trending')->default(1);

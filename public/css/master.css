@@ -12,6 +12,9 @@ body{
 a:hover{
     color: rgb(52, 180, 131);
 }
+li{
+    list-style: none;
+}
 .container-fluid{
   padding: 0;
 }
@@ -187,7 +190,7 @@ a:hover{
     min-width: 100%;
     height: 800px;
     justify-content: space-around;
-    background-color: rgb(235, 235, 235);
+    background-color: #f5f5f5;
     height: auto;
 
 }
@@ -284,4 +287,18 @@ a:hover{
 .__cart_sum{
     margin-top: 14px;
     margin-left: 1px;
+}
+.__categories_wrapper{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+/* .__categories_wrapper a{
+    d
+} */
+.__categories_wrapper li {
+    font-size: 24px;
 }

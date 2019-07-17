@@ -36,7 +36,6 @@ Route::group(['prefix' => 'cart'], function() {
     Route::get('/checkout', 'CartController@checkout')->middleware('notGuest', 'cartSession');
     Route::get('/flush', 'CartController@flush')->middleware('notGuest', 'cartSession');
     Route::patch('/', 'CartController@update')->middleware('notGuest', 'cartSession')->name('cart.update');
-    // Route::patch('/', 'CartController@discount')->middleware('notGuest', 'cartSession')->name('cart.discount');
 
     Route::patch('/discounts', 'DiscountController@discount')->name('cart.discount');
 });
