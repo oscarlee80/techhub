@@ -1,8 +1,9 @@
 window.onload = function ()
 {
-//     let craa = /^([0-9]{2})-([0-9]{4})/;
-    // console.log(craa.test("09-9233"));
-    console.log('holis');
+    function dd(data){
+        console.log(data);
+        return 'Secorto la ejecución!!';
+    }
 
     // SHOW PRODUCT THUMBNAILS
 
@@ -93,8 +94,17 @@ window.onload = function ()
 
     // LOGIN & REGISTER VALIDATION
     // if (document.getElementById('submit-register')){
-        let sumnitButtonRegister = document.getElementById('submit-register');
+    let sumnitButtonRegister = document.getElementById('submit-register');
     // }
+
+    function changeSubmitButtonError(){
+        error_class = document.getElementsByClassName("input_change_error");
+        if(error_class != 0 ){
+            sumnitButtonRegister.className = "submit_button_error"
+        }else{
+            sumnitButtonRegister.className = "submit_button"
+        }
+    }
     
     let passHint = document.getElementById('__passHint');
     
@@ -107,13 +117,10 @@ window.onload = function ()
     function empty(element){
         if (element.value == ''){
             element.className = "input_change_error";
-            sumnitButtonRegister.className = "submit_button_error"
+            changeSubmitButtonError();
             errors = {
                 'empty': 'Campo Obligatorio',
             }
-        }else{
-            element.className = "input_change";
-            sumnitButtonRegister.className = "submit_button"
         }
     }
 
@@ -121,29 +128,23 @@ window.onload = function ()
 
         let firstName_input = document.getElementById('first_name');
         firstName_input.addEventListener('blur', function(){
+            
             empty(firstName_input);
             
-            if(numbersRegex.test(firstName_input.value)){
-                firstName_input.className = "input_change_error";
-                sumnitButtonRegister.className = "submit_button_error"
-    
-                errors = {
-                    'first_name': 'Debe ingresar solo letras',
-                }
-            }
         })
     
-    
         firstName_input.addEventListener('keyup', function(){
-            empty(firstName_input);
-    
+                
             if (numbersRegex.test(firstName_input.value)) {
                 firstName_input.className = "input_change_error";
-                sumnitButtonRegister.className = "submit_button_error"
-    
+                changeSubmitButtonError() 
+
                 errors = {
                     'first_name': 'Debe ingresar solo letras',
                 }
+            }else{
+                firstName_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
     
         })
@@ -156,61 +157,54 @@ window.onload = function ()
 
         let lastName_input = document.getElementById('last_name');
         lastName_input.addEventListener('blur', function(){
+            
             empty(lastName_input);
-    
-            if (numbersRegex.test(lastName_input.value)){
-                lastName_input.className = "input_change_error";
-                sumnitButtonRegister.className = "submit_button_error"
-            }
+            
         })
     
         lastName_input.addEventListener('keyup', function(){
-            empty(lastName_input);
-            if (numbersRegex.test(lastName_input.value)){
+    
+            if (numbersRegex.test(lastName_input.value)) {
                 lastName_input.className = "input_change_error";
-                sumnitButtonRegister.className = "submit_button_error"
+                changeSubmitButtonError() 
+
                 errors = {
                     'last_name': 'Debe ingresar solo letras',
                 }
+            }else{
+                lastName_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
+    
         })
     }
 // --------------------
 
 // ----- EMAIL INPUT -----
-    if (document.getElementById('last_name')){
+    if (document.getElementById('email')){
 
-        let email_input = document.getElementById('last_name');
+        let email_input = document.getElementById('email');
         email_input.addEventListener('blur', function(){
+
             empty(email_input);
     
-            if(email_input.value){
-            let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            
-                if(!regex.test(email_input.value)){
-                    email_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
-                    errors = {
-                        'email': 'Email invalido',
-                    }
-                }
-            }
         })
     
         email_input.addEventListener('keyup', function(){
-            empty(email_input);
-    
-            if(email_input.value){
-            let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            
-                if(!regex.test(email_input.value)){
-                    email_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
-                    errors = {
-                        'email': 'Email invalido',
-                    }
+
+        let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+            if(!regex.test(email_input.value)){
+                email_input.className = "input_change_error"
+                changeSubmitButtonError();
+                errors = {
+                    'email': 'Email invalido',
                 }
+            }else{
+                email_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
+        
         })
     }
 // --------------------
@@ -221,32 +215,25 @@ window.onload = function ()
         let password_input = document.getElementById('password');
         password_input.style.marginBottom = "50px";
         password_input.addEventListener('blur', function(){
+
             empty(password_input);
-    
-            if(password_input.value){
-                let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
-                if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
-                    password_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
-                    errors = {
-                        'password': 'Contraseña debil',
-                    }
-                }
-            }
+
         })
     
         password_input.addEventListener('keyup', function(){
-            empty(password_input);
     
             if(password_input.value){
                 let passRegex = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])/;
     
                 if(password_input.value.length < 8 || !passRegex.test(password_input.value)){
                     password_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
+                    changeSubmitButtonError();
                     errors = {
                         'password': 'Contraseña debil',
                     }
+                }else{
+                    password_input.className = "input_change";
+                    sumnitButtonRegister.className = "submit_button";
                 }
             }
         })
@@ -256,34 +243,26 @@ window.onload = function ()
 // ----- PASSWORD CONFIRM INPUT -----
     if (document.getElementById('password_confirmation')){
 
+        let password_input = document.getElementById('password');
         let passwordConfirm_input = document.getElementById('password_confirmation');
         passwordConfirm_input.addEventListener('blur', function(){
+
             empty(passwordConfirm_input);
     
-            if(passwordConfirm_input.value){
-                if(passwordConfirm_input.value != password_input.value){
-                    passwordConfirm_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
-                    errors = {
-                        'password_confirm': 'Contraseñas no coinciden',
-                    }
-                }
-            }
         })
     
         passwordConfirm_input.addEventListener('keyup', function(){
-            empty(passwordConfirm_input);
     
-            if(passwordConfirm_input.value){
-                if(passwordConfirm_input.value != password_input.value){
-                    passwordConfirm_input.className = "input_change_error"
-                    sumnitButtonRegister.className = "submit_button_error"
-                    errors = {
-                        'password_confirm': 'Contraseñas no coinciden',
-                    }
+            if(passwordConfirm_input.value != password_input.value){
+                passwordConfirm_input.className = "input_change_error"
+                changeSubmitButtonError();
+                errors = {
+                    'password_confirm': 'Contraseñas no coinciden',
                 }
+            }else{
+                passwordConfirm_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
-            
         })
     }
 // --------------------
@@ -292,18 +271,19 @@ window.onload = function ()
 
         let cardNumber_input = document.getElementById('card_number');
         cardNumber_input.addEventListener('blud', function(){
+
             empty(cardNumber_input);
 
-            if (cardNumber_input.value.length != 16 || !numbersRegex.test(cardNumber_input.value)){
-                cardNumber_input.className = "input_change_error"
-            }
         })
 
         cardNumber_input.addEventListener('keyup', function () {
-            empty(cardNumber_input);
 
             if (cardNumber_input.value.length != 16 || !numbersRegex.test(cardNumber_input.value)) {
                 cardNumber_input.className = "input_change_error"
+                changeSubmitButtonError()
+            }else{
+                cardNumber_input.className = "input_change"
+                sumnitButtonRegister.className = "submit_button";
             }
         })
     }
@@ -316,14 +296,8 @@ window.onload = function ()
 
         let expiredDate_input = document.querySelector('#expired_date');
         expiredDate_input.addEventListener('blur', function(){
+
             empty(expiredDate_input);
-    
-            let expiredFormat = /^([0-9]{2})-([0-9]{4})/;
-    
-            if (expiredDate_input.value.length > 7 || !expiredFormat.test(expiredDate_input.value)){
-                expiredDate_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-            }
     
         })
 
@@ -334,7 +308,10 @@ window.onload = function ()
 
             if (expiredDate_input.value.length > 7 || !expiredFormat.test(expiredDate_input.value)) {
                 expiredDate_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
+                changeSubmitButtonError();
+            }else{
+                expiredDate_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
 
         })
@@ -347,21 +324,19 @@ window.onload = function ()
 
         let cvvCard_input = document.getElementById('cvv');
         cvvCard_input.addEventListener('blur', function () {
-            empty(cvvCard_input);
 
-            if (!(cvvCard_input.value.length > 2 && cvvCard_input.value.length < 5) || !numbersRegex.test(cvvCard_input.value)) {
-                cvvCard_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
-            }
+            empty(cvvCard_input);
 
         })
 
         cvvCard_input.addEventListener('keyup', function () {
-            empty(cvvCard_input);
 
             if (!(cvvCard_input.value.length > 2 && cvvCard_input.value.length < 5) || !numbersRegex.test(cvvCard_input.value)) {
                 cvvCard_input.className = "input_change_error"
-                sumnitButtonRegister.className = "submit_button_error"
+                changeSubmitButtonError();
+            }else{
+                cvvCard_input.className = "input_change";
+                sumnitButtonRegister.className = "submit_button";
             }
 
         })
@@ -376,16 +351,17 @@ window.onload = function ()
 
         register_form.addEventListener('submit', sendRegistrationForm);
         function sendRegistrationForm(e) {
-            e.preventDefault()
-            error_class = document.getElementsByClassName("input_change_error");
-            if (error_class.length == 0) {
-                register_form.submit();
+            let error_class = document.getElementsByClassName("input_change_error");
+
+            if (error_class.length != 0) {
+                e.preventDefault()
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Porfavor, verifique los datos ingresados.'
+                })
             }
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'Porfavor, verifique los datos ingresados.'
-            })
         }
     }
 
@@ -395,16 +371,17 @@ window.onload = function ()
 
         payment_form.addEventListener('submit', sendPaymentForm);
         function sendPaymentForm(e) {
-            e.preventDefault()
-            error_class = document.getElementsByClassName("input_change_error");
-            if (error_class.length == 0) {
-                payment_form.submit();
+            let error_class = document.getElementsByClassName("input_change_error");
+            
+            if (error_class.length != 0) {
+                e.preventDefault()
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Porfavor, verifique los datos ingresados.'
+                })
             }
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'Porfavor, verifique los datos ingresados.'
-            })
         }
     }
 

@@ -17,7 +17,7 @@
                         @csrf
 
                         <div class="cardholder_name">
-                            <input class="input_change @error('name') is-invalid @enderror" type="text" name="name" required value="{{ old('name') }}">
+                            <input class="input_change @error('name') is-invalid @enderror" type="text" name="name" required value="{{ old('name') }}" autofocus>
                             <label>Nombre del titular</label>
 
                             @error('name')
@@ -28,7 +28,7 @@
 
                         </div>
                         <div class="card_number">
-                                <input class="input_change @error('card_number') is-invalid @enderror" type="text" name="card_number" id="card_number" required value="{{ old('card_number') }}" autofocus>
+                                <input class="input_change @error('card_number') is-invalid @enderror" type="text" name="card_number" id="card_number" required value="{{ old('card_number') }}">
                                 <label>Número de Terjeta</label>
 
                                 @error('card_number')
