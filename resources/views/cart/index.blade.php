@@ -62,21 +62,25 @@
                 <div class="card-footer pull-rigth">
                     <div class="__coupon col-md-5 col-sm-5 no-padding-left pull-left">
                         <div class="row">
-                            <div class="col-6">
-                                <input type="text" class="form-control __coupon_numbre" placeholder="cupone code">
-                            </div>
-                            <div class="col-6">
-                                <input type="submit" class="btn btn-default" value="Use cupone">
-                            </div>
+                            <form action="{{route('cart.discount')}}" method="POST" class="__discount_form">
+                                @method('patch')
+                                @csrf
+                                <div class="col-6">
+                                    <input type="text" class="form-control __coupon_numbre" name="discount_name" placeholder="cupone code">
+                                </div>
+                                <div class="col-6">
+                                    <input type="submit" class="btn btn-default" value="Use cupone">
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="pull-right" style="margin: 10px">
                         <a href="{{url('/checkout/shipping')}}" class="btn btn-success pull-right">Checkout</a>
                         <a href="{{url('/cart/flush')}}" class="btn btn-danger pull-right">Vaciar Carrito</a>
 
-                        <div class="pull-right __cart_sum" style="margin: 5px">
+                        <div class="pull-right __cart_sum" style="margin: px">
                             <p>
-                                Discounts: <b>$ {{number_format(0)}}</b>;
+                                Discounts: <b>{{session('cart.discounts') ? session('cart.discounts')->price * 100 . '%' : 0 }}</b>;
                             </p>
                             <p>
                                 Total price: <b>$ {{number_format($totalPrice)}}</b>

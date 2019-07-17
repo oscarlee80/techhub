@@ -107,15 +107,15 @@
         </div>
     </div>
     <div class="finish pull-right __cart_sum">
-            <p>
-                Tax: <b>$ {{number_format(0)}}</b>;
-            </p>
-            <p>
-                Discounts: <b>$ {{number_format(0)}}</b>;
-            </p>
-            <p>
-                Total price: <b>$ {{number_format($totalPrice)}}</b>
-            </p>
+        <p>
+            Tax: <b>$ {{number_format(0)}}</b>;
+        </p>
+        <p>
+            Discounts: <b>{{session('cart.discounts') ? session('cart.discounts')->price * 100 . '%' : 0 }}</b>;
+        </p>
+        <p>
+            Total price: <b>$ {{number_format($totalPrice)}}</b>
+        </p>
         <a href="{{route('finalCheckout')}}" class="btn btn-success pull-right">Finalizar Compra</a>
     </div>
 </main>

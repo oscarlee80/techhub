@@ -69,7 +69,12 @@ class CartController extends Controller
         
         $products = collect(session('cart.products'));
         
-        $totalPrice = $products->sum('subtotal');
+        if(session('cart.discounts')){
+            $totalPrice = $products->sum('subtotal') * session('cart.discounts')->price;
+            // dd($totalPrice);
+        }else{
+            $totalPrice = $products->sum('subtotal');
+        }
 
         return view('cart.index')
                 ->with('products', $products)
