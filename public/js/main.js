@@ -77,14 +77,17 @@ window.onload = function ()
     {
         const products = document.querySelectorAll('.__cards')
 
+
         Array.from(products).forEach(function(element){
             element.addEventListener('mouseover', function () {
                 let description = element.querySelector('.__textoofertas').style.display="flex";
-                let price = element.querySelector('.__comprar').style.position="unset"
+                // let price = element.querySelector('.__comprar').style.position="unset"
+                let photo = element.querySelector('.__img_card').style.display="none";
             })
             element.addEventListener('mouseout', function () {
                 let description = element.querySelector('.__textoofertas').style.display = "none";
-                let price = element.querySelector('.__comprar').style.position = "absolute"
+                // let price = element.querySelector('.__comprar').style.position = "absolute";
+                let photo = element.querySelector('.__img_card').style.display="flex";
 
             })
         })

@@ -34,7 +34,7 @@
                 </span>
             @enderror
 
-            <input name="name" value="{{ old('name') }}" type="text" class="form-control"  style="width : 330px;">
+            <input name="name" value="{{ old('name') }}" type="text" class="form-control"  style="width : 330px;" autofocus>
         </div>
         <br>
         <hr align="center" width="380px">
