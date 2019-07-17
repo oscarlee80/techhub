@@ -95,6 +95,20 @@ window.onload = function ()
 
     productsHover()
 
+// -----------------
+
+    if (document.getElementById('category_index')){
+
+        let category_index_parent = document.getElementById('category_index').parentNode;
+
+        category_index_parent.style.display="flex"
+        category_index_parent.style.flexDirection="column"
+        category_index_parent.style.justifyContent="space-between"
+
+        console.log(category_index_parent);
+
+    }
+
     // LOGIN & REGISTER VALIDATION
     // if (document.getElementById('submit-register')){
     let sumnitButtonRegister = document.getElementById('submit-register');

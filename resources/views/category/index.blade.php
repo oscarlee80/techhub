@@ -5,7 +5,7 @@
 @endsection
 
 @section ('content')
-<div class="container-fluid" id="">
+<div class="container-fluid" id="category_index">
     <div class="col-12 text-center __productos_destacados">
         <p>
             Listado de Categorias
